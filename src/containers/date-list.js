@@ -1,21 +1,34 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 
-class DateList extends Component {
+export default class SearchBar extends Component {
+    constructor(props){
+        super(props);
+
+        this.state = { term: ''};
+        this.onInputChange = this.onInputChange.bind(this);
+    }
+
+    onInputChange(event) {
+        console.log(event.target.value);
+        this.setState({ term: event.target.value});
+    }
+
+    onFormSubmit(event) {
+        event.preventDefault();
+    }
+
     render() {
-        if(!this.props.track){
-            return <div>Select a track to get started.</div>
-        }
-        return(
-            <div>{this.props.track.track_name}</div>
+        return (
+            <form onSubmit={this.onFormSubmit} className="input-group">
+                <input
+                placeholder="Please select a date"
+                className="form-control"
+                value={this.state.term}
+                onChange={this.onInputChange} />
+                <span className="input-group-btn">
+                    <button type="submit" className="btn btn-secondary">Submit</button>
+                </span>    
+            </form>
         );
     }
 }
-
-function mapStateToProps(state) {
-    return {
-        track: state.activeTrack
-    }
-}
-
-export default connect(mapStateToProps)(DateList);
