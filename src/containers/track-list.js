@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchTracks } from '../actions/index';
+import { fetchTracks, fetchDates } from '../actions/index';
 import { selectTrack } from '../actions/index';
 import { bindActionCreators } from 'redux'; 
 
@@ -19,7 +19,11 @@ class TrackList extends Component {
                 <li 
                    
                     key={track.trackid}
-                    onClick={() => this.props.selectTrack(track)}
+                    onClick={() =>{
+                         this.props.selectTrack(track)
+                         this.props.fetchDates(track.trackid)
+                    }
+                        }
                     className="list-group-item">
 
                     {track.trackid}
@@ -47,6 +51,7 @@ function mapStateToProps({ tracks }) {
 function mapDispatchToProps(dispatch){
     return bindActionCreators({ 
         fetchTracks,
+        fetchDates,
         selectTrack: selectTrack
      }, dispatch);
 }

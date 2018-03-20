@@ -26,10 +26,4 @@ function mapStateToProps(state) {
     }
 }
 
-function mapDispatchToProps(dispatch){
-    return bindActionCreators({
-        selectTrack: selectTrack
-     }, dispatch);
-}
-
 export default connect(mapStateToProps)(RaceList);
