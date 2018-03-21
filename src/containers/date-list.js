@@ -11,6 +11,8 @@ class DateList extends Component {
         this.onInputChange = this.onInputChange.bind(this);
     }
 
+    s
+
     onInputChange(event) {
         console.log(event.target.value);
         this.setState({ term: event.target.value});

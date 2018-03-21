@@ -5,7 +5,7 @@ import RaceList from '../containers/race-list';
 export default class App extends Component {
   render() {
     return (
-      <div>
+      <div className="row">
         <TrackList />
         <RaceList />
       </div>
