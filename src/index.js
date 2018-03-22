@@ -5,7 +5,7 @@ import { createStore, applyMiddleware } from 'redux';
 import ReduxPromise  from 'redux-promise';
 import {BrowserRouter, Route } from 'react-router-dom';
 import reducers from './reducers';
-import TrackIndex from './components/track_index'
+import TrackIndex from './containers/track_index'
 
 const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
 

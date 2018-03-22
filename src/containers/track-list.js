@@ -1,25 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchTracks, fetchDates, selectTrack, selectDate } from '../actions/index';
+import { selectTrack } from '../actions/index';
 import { bindActionCreators } from 'redux'; 
 import TrackListItem from '../containers/track-list-item';
-
+import _ from "lodash";
 
 class TrackList extends Component {
     constructor(props){
         super(props); 
-        this.props.fetchTracks();  
     }
-    
+
     renderList(){
-        return this.props.tracks.map((track) =>{
+        return _.map(this.props.tracks, track =>{
             return (
 
                 <div 
                     className="dropdown" 
                     key={track.trackid}
                     onClick={() =>{
-                        this.props.fetchDates(track.trackid)
                         this.props.selectTrack(track)}
                     }>
 
@@ -43,19 +41,15 @@ class TrackList extends Component {
 
 function mapStateToProps(state) {
 
-    return { 
-        tracks: state.tracks,
+    return {
         track: state.activeTrack,
-        dates: state.dates
+        tracks: state.tracks
     }; 
 }
 
 function mapDispatchToProps(dispatch){
     return bindActionCreators({ 
-        fetchTracks,
-        fetchDates,
-        selectDate,
-        selectTrack: selectTrack
+        selectTrack
      }, dispatch);
 }
 

@@ -1,6 +1,7 @@
 import axios from 'axios';
 export const FETCH_TRACKS = 'FETCH_TRACKS';
 export const FETCH_DATES = 'FETCH_DATES';
+export const FETCH_RACES = 'FETCH_RACES';
 export const TRACK_SELECTED = 'TRACK_SELECTED';
 export const DATE_SELECTED = 'DATE_SELECTED';
 export const ROOT_URL = 'http://localhost:57893/api/'
@@ -25,6 +26,18 @@ export function fetchDates(trackid){
     }
 }
 
+export function fetchRaces(trackid, date){
+    // selectTrack is an ActionCreator, it needs to return an action,
+    //an object with a type property.
+    const param = `racedata/${trackid}/${date}`;
+    const url = `${ROOT_URL}${param}`;
+    const request = axios.get(url);
+    return {
+        type: FETCH_RACES,
+        payload: request
+    };
+}
+
 export function selectTrack(track){
     // selectTrack is an ActionCreator, it needs to return an action,
     //an object with a type property.
@@ -34,14 +47,11 @@ export function selectTrack(track){
     };
 }
 
-export function selectDate(trackid, date){
+export function selectDate(date){
     // selectTrack is an ActionCreator, it needs to return an action,
     //an object with a type property.
-    const param = `racedata/${trackid}/${date}`;
-    const url = `${ROOT_URL}${param}`;
-    const request = axios.get(url);
     return {
         type: DATE_SELECTED,
-        payload: request
+        payload: date
     };
 }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { selectTrack, selectDate } from '../actions/index';
 import { bindActionCreators } from 'redux'; 
+import _ from "lodash";
 
 class RaceList extends Component {
     constructor(props){
@@ -9,34 +10,32 @@ class RaceList extends Component {
     }
 
     renderRaces(){
-        return this.props.races.map((race) =>{
-            if(race.name == this.props.track.name){
-                return (
-                    <tr key={race.raceid}>
-                        <td>
-                            {race.racenum}
-                        </td>
-                        <td>
-                            {race.racetype}
-                        </td>
-                        <td>
-                            {race.distance}
-                        </td>
-                        <td>
-                            {race.distance}
-                        </td>
-                        <td>
-                            {race.ppturf}
-                        </td>
-                        <td>
-                            {race.chartturf}
-                        </td>
-                        <td>
-                            {race.offturf}
-                        </td>
-                    </tr>
-                );
-            }
+        return _.map(this.props.races, race => {
+            return(
+                <tr key={race.raceid}>
+                    <td>
+                        {race.racenum}
+                    </td>
+                    <td>
+                        {race.racetype}
+                    </td>
+                    <td>
+                        {race.distance}
+                    </td>
+                    <td>
+                        {race.distance}
+                    </td>
+                    <td>
+                        {race.ppturf}
+                    </td>
+                    <td>
+                        {race.chartturf}
+                    </td>
+                    <td>
+                        {race.offturf}
+                    </td>
+                </tr>
+            )  
         });       
     }
 
@@ -44,8 +43,7 @@ class RaceList extends Component {
         if(!this.props.track){
             return <div>Select a track and date to get started.</div>
         }
-
-        if(this.props.races){
+        else{
             return(
                 <div className="col-sm-9">
                     <h1>{this.props.track.name}</h1>
@@ -68,16 +66,13 @@ class RaceList extends Component {
                 
             );
         }
-        return(
-            <p>Loading...</p>
-        )
     }
 }
 
 function mapStateToProps(state) {
     return {
         track: state.activeTrack,
-        races: state.activeDate
+        races: state.races
     }
 }
 
