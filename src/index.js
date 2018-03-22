@@ -3,14 +3,18 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import ReduxPromise  from 'redux-promise';
-
-import App from './components/app';
+import {BrowserRouter, Route } from 'react-router-dom';
 import reducers from './reducers';
+import TrackIndex from './components/track_index'
 
 const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
 
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
-    <App />
+    <BrowserRouter>
+      <div className="row">
+        <Route path="/" component={TrackIndex} />
+      </div>  
+    </BrowserRouter>
   </Provider>
   , document.querySelector('.container'));
