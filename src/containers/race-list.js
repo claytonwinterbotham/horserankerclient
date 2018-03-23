@@ -7,10 +7,21 @@ import _ from "lodash";
 class RaceList extends Component {
     constructor(props){
         super(props);
+        this.state = {races: null,
+                      date: ""  }
     }
 
+componentWillReceiveProps(nextprops){
+    if(nextprops.races != this.props.races){
+        this.setState({races: nextprops.races})
+        this.setState({date: this.props.date})
+    }
+}
+
+
     renderRaces(){
-        return _.map(this.props.races, race => {
+        console.log(this.state.races)
+        return _.map(this.state.races, race => {
             return(
                 <tr key={race.raceid}>
                     <td>
@@ -43,11 +54,14 @@ class RaceList extends Component {
         if(!this.props.track){
             return <div>Select a track and date to get started.</div>
         }
-        else{
+        else if(this.props.date && 
+                this.props.track.trackid == 
+                this.props.date.trackid){
             return(
                 <div className="col-sm-9">
                     <h1>{this.props.track.name}</h1>
                         <table className="table table-hover table-condensed table-responsive">
+                            <caption>{this.state.date.date}</caption>
                             <thead>
                                 <tr>
                                     <th>Race Number</th>
@@ -62,9 +76,15 @@ class RaceList extends Component {
                                 {this.renderRaces()}
                             </tbody>        
                         </table>
-                </div>
-                
+                </div> 
             );
+        }else{
+            if(this.props.date){
+            console.log(this.props.date.trackid + " " + this.props.track.trackid)
+            }
+            return(
+                <div>Please choose a date</div>
+            )
         }
     }
 }
@@ -72,6 +92,7 @@ class RaceList extends Component {
 function mapStateToProps(state) {
     return {
         track: state.activeTrack,
+        date: state.activeDate,
         races: state.races
     }
 }

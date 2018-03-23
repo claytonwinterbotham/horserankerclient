@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { selectDate } from '../actions/index';
+import { selectDate} from '../actions/index';
 import { bindActionCreators } from 'redux'; 
 import _ from "lodash";
 
@@ -11,22 +11,31 @@ class TrackListItem extends Component {
 
     renderListItem(){
         return _.map(this.props.dates, date =>{
-            return (
-                <li
-                    key={date.date}
-                    onClick={() =>{
-                        this.props.selectDate(date)
-                    }}>
-                    <a href="#">{date.date}</a>
-                </li>
-            );
+            if(date.trackid == this.props.track.trackid){
+                return (
+                    <li
+                        key={date.date}
+                        onClick={() =>{
+                            this.props.selectDate(date)            
+                        }}>
+                        <a href="#">{date.date}</a>
+                    </li>
+                );
+            }
         });       
     }
 
     render() {
-        return (
+        if(this.props.track){
+            return (
+                <ul className="dropdown-menu" aria-labelledby="trackMenu">
+                    {this.renderListItem()}
+                </ul> 
+            )
+        }
+        return(
             <ul className="dropdown-menu" aria-labelledby="trackMenu">
-                {this.renderListItem()}
+                <li>Loading...</li>
             </ul> 
         )
     }
@@ -36,6 +45,7 @@ function mapStateToProps(state) {
     //Whatever is return will show up as props
     //inside of TrackList
     return { 
+        track: state.activeTrack,
         date: state.activeDate,
         dates: state.dates
     }; // { weather } === { weather: weather }

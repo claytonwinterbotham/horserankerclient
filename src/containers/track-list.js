@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { selectTrack } from '../actions/index';
+import { selectTrack, fetchDates } from '../actions/index';
 import { bindActionCreators } from 'redux'; 
 import TrackListItem from '../containers/track-list-item';
 import _ from "lodash";
@@ -18,7 +18,9 @@ class TrackList extends Component {
                     className="dropdown" 
                     key={track.trackid}
                     onClick={() =>{
-                        this.props.selectTrack(track)}
+                        this.props.selectTrack(track)
+                        this.props.fetchDates(track.trackid)
+                    }
                     }>
 
                 <button className="btn btn-default dropdown-toggle" type="button" id="trackMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -48,7 +50,8 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch){
-    return bindActionCreators({ 
+    return bindActionCreators({
+        fetchDates, 
         selectTrack
      }, dispatch);
 }

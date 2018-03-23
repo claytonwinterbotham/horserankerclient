@@ -11,25 +11,16 @@ class TrackIndex extends Component {
         this.props.fetchTracks();  
     }
 
-    renderDates(){
-        if(this.props.track){
-            this.props.fetchDates(this.props.track.trackid)
-        }
-    }
-
     renderRaces(){
-        console.log("clown")
         if(this.props.date){
             this.props.fetchRaces(
                 this.props.date.trackid,
                   this.props.date.date
             )
-            console.log("face")
         }
     }
     
     render() {
-        this.renderDates()
         this.renderRaces()
         return (
             <div>
