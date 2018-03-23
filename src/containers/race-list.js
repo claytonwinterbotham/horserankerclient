@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { selectTrack, selectDate } from '../actions/index';
+import { BrowserRouter, Route, Switch, Link, withRouter } from 'react-router-dom';
+import { selectTrack, selectDate, selectRace, fetchHorses } from '../actions/index';
 import { bindActionCreators } from 'redux'; 
 import _ from "lodash";
 
@@ -8,7 +9,8 @@ class RaceList extends Component {
     constructor(props){
         super(props);
         this.state = {races: null,
-                      date: ""  }
+                      date: ""  }  
+        this.handleClick = this.handleClick.bind(this);                      
     }
 
 componentWillReceiveProps(nextprops){
@@ -17,13 +19,30 @@ componentWillReceiveProps(nextprops){
         this.setState({date: this.props.date})
     }
 }
+    handleClick(){
+        if(this.props.race){
+            this.props.fetchHorses(
+                this.props.raceid,
+                this.props.track.trackid,
+                this.props.date.date, () =>{
 
+                    this.props.history.push("/horsedata")
+                })
+                console.log("race" + this.props.race)
+        }
+    }
 
     renderRaces(){
         console.log(this.state.races)
         return _.map(this.state.races, race => {
             return(
-                <tr key={race.raceid}>
+                <tr key={race.raceid}
+                        onClick={() =>{
+                            this.props.selectRace(race)
+                            this.handleClick
+                        }
+                            
+                        }>
                     <td>
                         {race.racenum}
                     </td>
@@ -44,7 +63,7 @@ componentWillReceiveProps(nextprops){
                     </td>
                     <td>
                         {race.offturf}
-                    </td>
+                    </td> 
                 </tr>
             )  
         });       
@@ -93,8 +112,16 @@ function mapStateToProps(state) {
     return {
         track: state.activeTrack,
         date: state.activeDate,
+        race: state.activeRace,
         races: state.races
     }
 }
 
-export default connect(mapStateToProps)(RaceList);
+function mapDispatchToProps(dispatch){
+    return bindActionCreators({
+        fetchHorses, 
+        selectRace
+     }, dispatch);
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(RaceList));
