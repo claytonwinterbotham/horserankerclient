@@ -14,7 +14,7 @@ class TrackListItem extends Component {
         return _.map(this.props.dates, date =>{
             if(date.trackid == this.props.track.trackid){
                 return (
-                    <li
+                    <li 
                         key={date.date}
                         onClick={() =>{
                             this.props.selectDate(date)

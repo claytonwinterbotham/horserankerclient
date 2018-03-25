@@ -11,23 +11,6 @@ class RaceList extends Component {
         this.state = {races: null,
                       date: ""  }                       
     }
-
-// componentWillReceiveProps(nextprops){
-//     if(nextprops.races != this.props.races){
-//         this.setState({races: nextprops.races})
-//         this.setState({date: this.props.date})
-//     }
-//}
-    // handleClick(){
-    //     if(this.props.race){
-    //         this.props.fetchHorses(
-    //             this.props.race.raceid,
-    //             this.props.track.trackid,
-    //             this.props.date.date)
-    //             this.props.history.push("/horsedata")
-    //     }
-    // }
-
     renderRaces(){
         return _.map(this.props.races, race => {
             return(

@@ -8,6 +8,10 @@ import ActiveDate from './reducer_active_date';
 import ActiveTrack from './reducer_active_track';
 import ActiveRace from './reducer_active_race';
 import ActiveHorse from './reducer_active_horse';
+import { authentication }  from './reducer_authentication';
+import { registration } from './reducer_registration';
+import { users } from './reducer_users';
+import { alert } from './reducer_alert';
 
 
 const rootReducer = combineReducers({
@@ -19,7 +23,11 @@ const rootReducer = combineReducers({
   activeTrack: ActiveTrack,
   activeDate: ActiveDate,
   activeRace: ActiveRace,
-  activeHorse: ActiveHorse
+  activeHorse: ActiveHorse,
+  authentication,
+  registration,
+  users,
+  alert
   
 });
 

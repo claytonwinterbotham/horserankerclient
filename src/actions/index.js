@@ -1,4 +1,6 @@
 import axios from 'axios';
+export * from './alert.actions';
+export * from './user.actions';
 export const FETCH_TRACKS = 'FETCH_TRACKS';
 export const FETCH_DATES = 'FETCH_DATES';
 export const FETCH_RACES = 'FETCH_RACES';
@@ -10,24 +12,45 @@ export const HORSE_SELECTED = 'HORSE_SELECTED';
 export const RACE_SELECTED = 'RACE_SELECTED';
 export const ROOT_URL = 'http://localhost:57893/api/'
 
-export function fetchTracks(){
+export const dataActions = {
+    fetchTracks,
+    fetchDates,
+    fetchRaces,
+    fetchHorses,
+    fetchHorseDetail,
+    selectTrack,
+    selectDate,
+    selectRace,
+    selectHorse
+};
+
+function fetchTracks(){
     const param = 'trackdata';
     const url = `${ROOT_URL}${param}`;
     const request = axios.get(url);
-    return {
-        type: FETCH_TRACKS,
-        payload: request
-    }
+    console.log("Fetch tracks" + request)
+    return (dispatch) => {
+        request.then(({data}) => {
+            dispatch({ 
+                type: FETCH_TRACKS,
+                payload: request
+            })
+        });
+    };   
 }
 
 export function fetchDates(trackid){
     const param = `datedata/${trackid}`;
     const url = `${ROOT_URL}${param}`;
     const request = axios.get(url);
-    return {
-        type: FETCH_DATES,
-        payload: request
-    }
+    return (dispatch) => {
+        request.then(({data}) => {
+            dispatch({ 
+                type: FETCH_DATES,
+                payload: request
+            })
+        });
+    };   
 }
 
 export function fetchRaces(trackid, date){
@@ -36,10 +59,14 @@ export function fetchRaces(trackid, date){
     const param = `racedata/${trackid}/${date}`;
     const url = `${ROOT_URL}${param}`;
     const request = axios.get(url);
-    return {
-        type: FETCH_RACES,
-        payload: request
-    };
+    return (dispatch) => {
+        request.then(({data}) => {
+            dispatch({ 
+                type: FETCH_RACES,
+                payload: request
+            })
+        });
+    };   
 }
 
 export function fetchHorses(raceid, trackid, date){
@@ -48,10 +75,14 @@ export function fetchHorses(raceid, trackid, date){
     const param = `horsedata/${raceid}/${trackid}/${date}`;
     const url = `${ROOT_URL}${param}`;
     const request = axios.get(url)
-    return {
-        type: FETCH_HORSES,
-        payload: request
-    };
+    return (dispatch) => {
+        request.then(({data}) => {
+            dispatch({ 
+                type: FETCH_HORSES,
+                payload: request
+            })
+        });
+    };   
 }
 
 export function fetchHorseDetail(raceid, horseid){
@@ -60,10 +91,14 @@ export function fetchHorseDetail(raceid, horseid){
     const param = `horsedata/${raceid}/${horseid}`;
     const url = `${ROOT_URL}${param}`;
     const request = axios.get(url)
-    return {
-        type: FETCH_HORSE_DETAIL,
-        payload: request
-    };
+    return (dispatch) => {
+        request.then(({data}) => {
+            dispatch({ 
+                type: FETCH_HORSE_DETAIL,
+                payload: request
+            })
+        });
+    };   
 }
 
 export function selectTrack(track){

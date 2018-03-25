@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { selectTrack, fetchDates } from '../actions/index';
 import { bindActionCreators } from 'redux'; 
-import TrackListItem from '../containers/track-list-item';
+import TrackListItem from './track-list-item';
 import _ from "lodash";
 
 class TrackList extends Component {
@@ -11,11 +11,13 @@ class TrackList extends Component {
     }
 
     renderList(){
+        let className = "dropdown"
+         if(this.props.tracks){
+          className += " menu-active";
         return _.map(this.props.tracks, track =>{
             return (
-
                 <div 
-                    className="dropdown" 
+                    className={className}
                     key={track.trackid}
                     onClick={() =>{
                         this.props.selectTrack(track)
@@ -30,6 +32,7 @@ class TrackList extends Component {
                 </div>
             );
         });
+    }
     }
 
     render() {
