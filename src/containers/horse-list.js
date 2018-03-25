@@ -12,73 +12,146 @@ class horseList extends Component {
 
 
 
-    // renderHorses(){
-    //     return _.map(this.state.horses, horse => {
-    //         return(
-    //             <tr key={horse.horseid}>
-    //                 <td>
-    //                     {horse.horsenum}
-    //                 </td>
-    //                 <td>
-    //                     {horse.horsetype}
-    //                 </td>
-    //                 <td>
-    //                     {horse.distance}
-    //                 </td>
-    //                 <td>
-    //                     {horse.distance}
-    //                 </td>
-    //                 <td>
-    //                     {horse.ppturf}
-    //                 </td>
-    //                 <td>
-    //                     {horse.chartturf}
-    //                 </td>
-    //                 <td>
-    //                     {horse.offturf}
-    //                 </td>
-    //             </tr>
-    //         )  
-    //     });       
-    //}
-
-    render() { 
-        // if(!this.props.track){
-        //     return <div>Select a track and date to get started.</div>
-        // }
-        // else if(this.props.date && 
-        //         this.props.track.trackid == 
-        //         this.props.date.trackid){
-        //     return(
-        //         <div className="col-sm-9">
-        //             <h1>{this.props.track.name}</h1>
-        //                 <table className="table table-hover table-condensed table-responsive">
-        //                     <caption>{this.state.date.date}</caption>
-        //                     <thead>
-        //                         <tr>
-        //                             <th>horse Number</th>
-        //                             <th>horse Type</th>
-        //                             <th>Distance</th>
-        //                             <th>PPTurf</th>
-        //                             <th>ChartTurf</th> 
-        //                             <th>Offturf</th>                                               
-        //                         </tr>
-        //                     </thead>
-        //                     <tbody>
-        //                         {this.renderhorses()}
-        //                     </tbody>        
-        //                 </table>
-        //         </div> 
-        //     );
-        // }else{
-        //     if(this.props.date){
-        //     console.log(this.props.date.trackid + " " + this.props.track.trackid)
-        //     }
+    renderHorses(){
+        if(this.props.horses){
+        return _.map(this.props.horses, horse => {
             return(
                 
-                <div><h1>Horse Data!!!!!!</h1></div>
-            )
-        //}
+                <tr key={horse.horseid}>
+                    <td>
+                        {horse.horseid}
+                    </td>
+                    <td>
+                        {horse.raceid}
+                    </td>
+                    <td>
+                        {horse.trackid}
+                    </td>
+                    <td>
+                        {horse.name}
+                    </td>
+                    <td>
+                        {horse.possummary}
+                    </td>
+                    <td>
+                        {horse.e2AVGRANK}
+                    </td>
+                    <td>
+                        {horse.eprank}
+                    </td>
+                    <td>
+                        {horse.hE2RANK}
+                    </td>
+                    <td>
+                        {horse.lpavgrank}
+                    </td>
+                    <td>
+                        {horse.lpRank}
+                    </td>
+                    <td>
+                        {horse.hlprank}
+                    </td>
+                    <td>
+                        {horse.lR1RANK}
+                    </td>
+                    <td>
+                        {horse.lR2RANK}
+                    </td>
+                    <td>
+                        {horse.backspeedrank}
+                    </td>
+                    <td>
+                        {horse.aclrank}
+                    </td>
+                    <td>
+                        {horse.curclassrank}
+                    </td>
+                    <td>
+                        {horse.primepowerrank}
+                    </td>
+                    <td>
+                        {horse.pP_ODDS}
+                    </td>
+                    <td>
+                        {horse.fin}
+                    </td>
+                </tr>
+            )  
+        }); 
+    }      
+    }
+
+    render() { 
+        if(!this.props.horses){
+            return <div>Loading...</div>
+        }
+        else{
+            return(
+                <div className="col-sm-12">
+                <div className="text-xs-left">
+                    <Link to="/" className="btn btn-primary">
+                    Back
+                    </Link>
+                </div>
+                    {/* <h1>{this.props.track.name}</h1> */}
+                        <table className="table table-hover table-responsive">
+                            {/* <caption>{this.state.date.date}</caption> */}
+                            <thead>
+                                <tr>
+                                    <th>horse id</th>
+                                    <th>race id</th>
+                                    <th>track id </th>
+                                    <th>Name</th>
+                                    <th> possummary</th>
+                                    <th>e2avgrank</th>
+                                    <th>
+                                       eprank
+                                    </th>
+                                    <th>
+                                       he2rank
+                                    </th>
+                                    <th>
+                                       lpavgrank
+                                    </th>
+                                    <th>
+                                       lprank
+                                    </th>
+                                    <th>
+                                       hlprank
+                                    </th>
+                                    <th>
+                                       lr1rank
+                                    </th>
+                                    <th>
+                                       lr2rank
+                                    </th>
+                                    <th>
+                                       backspeedrank
+                                    </th>
+                                    <th>
+                                       aclrank
+                                    </th>
+                                    <th>
+                                       curclassrank
+                                    </th>
+                                    <th>
+                                       primepowerrank
+                                    </th>
+                                    <th>
+                                       pp_odds
+                                    </th>
+                                    <th>
+                                       finish
+                                    </th>                                                 
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {this.renderHorses()}
+                            </tbody>        
+                        </table>
+                </div> 
+            );
+        }
     }
 }
 

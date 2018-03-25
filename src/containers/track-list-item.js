@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { selectDate} from '../actions/index';
+import { selectDate, fetchRaces} from '../actions/index';
 import { bindActionCreators } from 'redux'; 
 import _ from "lodash";
 
@@ -17,7 +17,11 @@ class TrackListItem extends Component {
                     <li
                         key={date.date}
                         onClick={() =>{
-                            this.props.selectDate(date)            
+                            this.props.selectDate(date)
+                            this.props.fetchRaces(
+                                        date.trackid,
+                                        date.date
+                            )            
                         }}>
                         <a href="#">{date.date}</a>
                     </li>
@@ -53,7 +57,8 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch){
-    return bindActionCreators({ 
+    return bindActionCreators({
+        fetchRaces, 
         selectDate
      }, dispatch);
 }

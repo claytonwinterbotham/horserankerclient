@@ -9,40 +9,40 @@ class RaceList extends Component {
     constructor(props){
         super(props);
         this.state = {races: null,
-                      date: ""  }  
-        this.handleClick = this.handleClick.bind(this);                      
+                      date: ""  }                       
     }
 
-componentWillReceiveProps(nextprops){
-    if(nextprops.races != this.props.races){
-        this.setState({races: nextprops.races})
-        this.setState({date: this.props.date})
-    }
-}
-    handleClick(){
-        if(this.props.race){
-            this.props.fetchHorses(
-                this.props.raceid,
-                this.props.track.trackid,
-                this.props.date.date, () =>{
-
-                    this.props.history.push("/horsedata")
-                })
-                console.log("race" + this.props.race)
-        }
-    }
+// componentWillReceiveProps(nextprops){
+//     if(nextprops.races != this.props.races){
+//         this.setState({races: nextprops.races})
+//         this.setState({date: this.props.date})
+//     }
+//}
+    // handleClick(){
+    //     if(this.props.race){
+    //         this.props.fetchHorses(
+    //             this.props.race.raceid,
+    //             this.props.track.trackid,
+    //             this.props.date.date)
+    //             this.props.history.push("/horsedata")
+    //     }
+    // }
 
     renderRaces(){
-        console.log(this.state.races)
-        return _.map(this.state.races, race => {
+        return _.map(this.props.races, race => {
             return(
                 <tr key={race.raceid}
-                        onClick={() =>{
-                            this.props.selectRace(race)
-                            this.handleClick
-                        }
-                            
-                        }>
+                    onClick={() => {
+                        this.props.selectRace(race, () => {
+                            //this.handleClick()
+                            this.props.fetchHorses(
+                                race.raceid,
+                                this.props.track.trackid,
+                                this.props.date.date)
+                                this.props.history.push("/horsedata")
+                            console.log("this is the selected race " + this.props.race)
+                        })
+                        }}>
                     <td>
                         {race.racenum}
                     </td>
@@ -79,7 +79,7 @@ componentWillReceiveProps(nextprops){
             return(
                 <div className="col-sm-9">
                     <h1>{this.props.track.name}</h1>
-                        <table className="table table-hover table-condensed table-responsive">
+                        <table className="table table-hover table-responsive">
                             <caption>{this.state.date.date}</caption>
                             <thead>
                                 <tr>
@@ -113,7 +113,8 @@ function mapStateToProps(state) {
         track: state.activeTrack,
         date: state.activeDate,
         race: state.activeRace,
-        races: state.races
+        races: state.races,
+        horses: state.horses
     }
 }
 
