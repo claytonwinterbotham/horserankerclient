@@ -7,6 +7,7 @@ import {BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 import reducers from './reducers';
 import TrackIndex from './containers/track_index';
 import HorseList from './containers/horse-list';
+import HorseDetail from './containers/horse-detail';
 
 
 const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
@@ -16,6 +17,7 @@ ReactDOM.render(
     <BrowserRouter>
       <div className="row">
         <Switch>
+        <Route path="/horsedetail" component={HorseDetail} />
           <Route path="/horsedata" component={HorseList} />
           <Route path="/" component={TrackIndex} />
         </Switch>

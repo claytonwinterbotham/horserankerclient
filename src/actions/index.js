@@ -3,6 +3,7 @@ export const FETCH_TRACKS = 'FETCH_TRACKS';
 export const FETCH_DATES = 'FETCH_DATES';
 export const FETCH_RACES = 'FETCH_RACES';
 export const FETCH_HORSES = 'FETCH_HORSES';
+export const FETCH_HORSE_DETAIL = 'FETCH_HORSE_DETAIL';
 export const TRACK_SELECTED = 'TRACK_SELECTED';
 export const DATE_SELECTED = 'DATE_SELECTED';
 export const HORSE_SELECTED = 'HORSE_SELECTED';
@@ -41,19 +42,26 @@ export function fetchRaces(trackid, date){
     };
 }
 
-export function fetchHorses(raceid, trackid, date, callback){
+export function fetchHorses(raceid, trackid, date){
     // selectTrack is an ActionCreator, it needs to return an action,
     //an object with a type property.
     const param = `horsedata/${raceid}/${trackid}/${date}`;
     const url = `${ROOT_URL}${param}`;
     const request = axios.get(url)
-        // .then(function (response) {
-        //     console.log(response);
-        //   })
-
-    console.log("request" + request)
     return {
         type: FETCH_HORSES,
+        payload: request
+    };
+}
+
+export function fetchHorseDetail(raceid, horseid){
+    // selectTrack is an ActionCreator, it needs to return an action,
+    //an object with a type property.
+    const param = `horsedata/${raceid}/${horseid}`;
+    const url = `${ROOT_URL}${param}`;
+    const request = axios.get(url)
+    return {
+        type: FETCH_HORSE_DETAIL,
         payload: request
     };
 }
@@ -76,9 +84,10 @@ export function selectDate(date){
     };
 }
 
-export function selectHorse(horse){
+export function selectHorse(horse, callback){
     // selectTrack is an ActionCreator, it needs to return an action,
     //an object with a type property.
+    callback()
     return {
         type: HORSE_SELECTED,
         payload: horse

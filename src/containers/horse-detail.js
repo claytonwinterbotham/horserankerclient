@@ -1,106 +1,91 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { selectTrack, selectDate, selectHorse, fetchHorseDetail } from '../actions/index';
+import { selectTrack, selectDate } from '../actions/index';
 import { bindActionCreators } from 'redux'; 
 import _ from "lodash";
 
-class horseList extends Component {
+class horseDetail extends Component {
     constructor(props){
         super(props);
     }
 
 
 
-    renderHorses(){
-        if(this.props.horses){
-        return _.map(this.props.horses, horse => {
+    renderdetails(){
+        if(this.props.detail){
+            console.log("horsedetail" + this.props.detail)
             return(
                 
-                <tr key={horse.horseid}
-
-                onClick={() => {
-                        this.props.selectHorse(horse, () => {
-                            //this.handleClick()
-                            this.props.fetchHorseDetail(
-                                this.props.race.raceid,
-                                horse.horseid)
-                                this.props.history.push("/horsedetail")
-                            console.log("this is the selected race " + this.props.horse)
-                        })
-                        }}>
+                <tr>
                     <td>
-                        {horse.horseid}
+                        {this.props.detail.horseid}
                     </td>
                     <td>
-                        {horse.raceid}
+                        {this.props.detail.raceid}
                     </td>
                     <td>
-                        {horse.trackid}
+                        {this.props.detail.trackid}
                     </td>
                     <td>
-                        {horse.name}
+                        {this.props.detail.name}
                     </td>
                     <td>
-                        {horse.possummary}
+                        {this.props.detail.possummary}
                     </td>
                     <td>
-                        {horse.e2AVGRANK}
+                        {this.props.detail.e2AVGRANK}
                     </td>
                     <td>
-                        {horse.eprank}
+                        {this.props.detail.eprank}
                     </td>
                     <td>
-                        {horse.hE2RANK}
+                        {this.props.detail.hE2RANK}
                     </td>
                     <td>
-                        {horse.lpavgrank}
+                        {this.props.detail.lpavgrank}
                     </td>
                     <td>
-                        {horse.lpRank}
+                        {this.props.detail.lpRank}
                     </td>
                     <td>
-                        {horse.hlprank}
+                        {this.props.detail.hlprank}
                     </td>
                     <td>
-                        {horse.lR1RANK}
+                        {this.props.detail.lR1RANK}
                     </td>
                     <td>
-                        {horse.lR2RANK}
+                        {this.props.detail.lR2RANK}
                     </td>
                     <td>
-                        {horse.backspeedrank}
+                        {this.props.detail.backspeedrank}
                     </td>
                     <td>
-                        {horse.aclrank}
+                        {this.props.detail.aclrank}
                     </td>
                     <td>
-                        {horse.curclassrank}
+                        {this.props.detail.curclassrank}
                     </td>
                     <td>
-                        {horse.primepowerrank}
+                        {this.props.detail.primepowerrank}
                     </td>
                     <td>
-                        {horse.pP_ODDS}
-                    </td>
-                    <td>
-                        {horse.fin}
+                        {this.props.detail.pP_ODDS}
                     </td>
                 </tr>
             )  
-        }); 
-    }      
+        }      
     }
 
     render() { 
-        if(!this.props.horses){
+        if(!this.props.detail){
             return <div>Loading...</div>
         }
         else{
             return(
                 <div className="col-sm-12">
                 <div className="text-xs-left">
-                    <Link to="/" className="btn btn-primary">
+                    <Link to="/horsedata" className="btn btn-primary">
                     Back
                     </Link>
                 </div>
@@ -150,14 +135,11 @@ class horseList extends Component {
                                     </th>
                                     <th>
                                        pp_odds
-                                    </th>
-                                    <th>
-                                       finish
-                                    </th>                                                 
+                                    </th>                                           
                                 </tr>
                             </thead>
                             <tbody>
-                                {this.renderHorses()}
+                                {this.renderdetails()}
                             </tbody>        
                         </table>
                 </div> 
@@ -168,16 +150,8 @@ class horseList extends Component {
 
 function mapStateToProps(state) {
     return {
-        race: state.activeRace,
-        horses: state.horses
+        detail: state.horseDetail
     }
 }
 
-function mapDispatchToProps(dispatch){
-    return bindActionCreators({
-        fetchHorseDetail, 
-        selectHorse
-     }, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(horseList);
+export default connect(mapStateToProps)(horseDetail);
