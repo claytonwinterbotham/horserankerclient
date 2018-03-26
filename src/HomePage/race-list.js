@@ -3,91 +3,54 @@ import { connect } from 'react-redux';
 import { BrowserRouter, Route, Switch, Link, withRouter } from 'react-router-dom';
 import { selectTrack, selectDate, selectRace, fetchHorses } from '../actions/index';
 import { bindActionCreators } from 'redux'; 
+import ReactTable from 'react-table'
 import _ from "lodash";
 
 class RaceList extends Component {
     constructor(props){
         super(props);
-        this.state = {races: null,
-                      date: ""  }                       
+        this.state = {races: this.props.races}                            
     }
-    renderRaces(){
-        return _.map(this.props.races, race => {
-            return(
-                <tr key={race.raceid}
-                    onClick={() => {
-                        this.props.selectRace(race, () => {
-                            //this.handleClick()
-                            this.props.fetchHorses(
-                                race.raceid,
-                                this.props.track.trackid,
-                                this.props.date.date)
-                                this.props.history.push("/horsedata")
-                            console.log("this is the selected race " + this.props.race)
-                        })
-                        }}>
-                    <td>
-                        {race.racenum}
-                    </td>
-                    <td>
-                        {race.racetype}
-                    </td>
-                    <td>
-                        {race.distance}
-                    </td>
-                    <td>
-                        {race.distance}
-                    </td>
-                    <td>
-                        {race.ppturf}
-                    </td>
-                    <td>
-                        {race.chartturf}
-                    </td>
-                    <td>
-                        {race.offturf}
-                    </td> 
-                </tr>
-            )  
-        });       
-    }
-
+   
     render() { 
+        const { races } = this.state;
         if(!this.props.track){
             return <div>Select a track and date to get started.</div>
         }
-        else if(this.props.date && 
-                this.props.track.trackid == 
-                this.props.date.trackid){
+         else if(this.props.date &&
+                 this.props.races &&     
+                 this.props.track.trackid == 
+                 this.props.date.trackid){
             return(
-                <div className="col-sm-9">
-                    <h1>{this.props.track.name}</h1>
-                        <table className="table table-hover table-responsive">
-                            <caption>{this.state.date.date}</caption>
-                            <thead>
-                                <tr>
-                                    <th>Race Number</th>
-                                    <th>Race Type</th>
-                                    <th>Distance</th>
-                                    <th>PPTurf</th>
-                                    <th>ChartTurf</th> 
-                                    <th>Offturf</th>                                               
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {this.renderRaces()}
-                            </tbody>        
-                        </table>
-                </div> 
-            );
-        }else{
-            if(this.props.date){
-            console.log(this.props.date.trackid + " " + this.props.track.trackid)
-            }
-            return(
-                <div>Please choose a date</div>
+               
+                
+                <ReactTable
+                 data={this.props.races}
+                 columns={[{
+                    Header: 'Racenum',
+                    accessor: 'racenum'
+                  }, {
+                    Header: 'Racetype',
+                    accessor: 'racetype',  
+                  }, {
+                    Header: 'Distance',
+                    accessor: 'distance',  
+                  }, {
+                    Header: 'PPturf', 
+                    accessor: 'ppturf'
+                  }, {
+                    Header: 'Chartturf',
+                    accessor: 'chartturf'
+                  }, {
+                    Header: 'Offturf', 
+                    accessor: 'offturf'
+                   }] }
+                />
             )
         }
+         return(
+             <div>Please choose a date</div>
+         )
     }
 }
 
