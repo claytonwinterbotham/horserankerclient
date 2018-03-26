@@ -23,7 +23,7 @@ class TrackListItem extends Component {
                                         date.date
                             )            
                         }}>
-                        <a href="#">{date.date}</a>
+                        {date.date}
                     </li>
                 );
             }
