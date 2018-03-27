@@ -72,13 +72,5 @@ function mapStateToProps(state) {
     };
 }
 
-// function mapDispatchToProps(dispatch){
-//     return bindActionCreators({
-//         fetchTracks,
-//         fetchDates,
-//         fetchRaces
-//      }, dispatch);
-// }
-
 const connectedHomePage = connect(mapStateToProps)(HomePage);
 export { connectedHomePage as HomePage };

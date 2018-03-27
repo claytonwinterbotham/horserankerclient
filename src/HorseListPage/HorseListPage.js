@@ -20,7 +20,7 @@ class HorseListPage extends Component {
             <div>
                 <div className="row">
                     <div className="col-sm-2">    
-                        <Link to="/" className="btn btn-info">
+                        <Link to="/" className="btn btn-info back-button">
                         Back
                         </Link> 
                     </div>
@@ -93,20 +93,15 @@ class HorseListPage extends Component {
                         // By default a custom 'onClick' handler will override this functionality.
                         // If you want to fire the original onClick handler, call the
                         // 'handleOriginal' function.
-                        //    this.props.selectRace(rowInfo.original, () => {
-                        //        this.props.fetchHorses(
-                        //            rowInfo.original.raceid,
-                        //            rowInfo.original.trackid,
-                        //            rowInfo.original.date)
-                        //            this.props.history.push("/horsedata")
-                        //this.props.selectHorse(horse, () => {
-                            //     //this.handleClick()
-                            //     this.props.fetchHorseDetail(
-                            //         this.props.race.raceid,
-                            //         horse.horseid)
-                            //         this.props.history.push("/horsedetail")
-                            //     console.log("this is the selected race " + this.props.horse)
-                        //})
+                        
+                        this.props.selectHorse(rowInfo.original, () => {
+                                //this.handleClick()
+                                this.props.fetchHorseDetail(
+                                    rowInfo.original.raceid,
+                                    rowInfo.original.horseid)
+                                    this.props.history.push("/horsedetail")
+                                console.log("this is the selected race " + this.props.horse)
+                        })
                         if (handleOriginal) {
                             handleOriginal()
                         }
