@@ -5,7 +5,7 @@ import _ from "lodash";
 export default function(state = null, action) {
     switch(action.type){
     case FETCH_HORSES:
-    return _.mapKeys(action.payload.data, 'horseid');
+    return action.payload.data
     default:  
         return state
     }

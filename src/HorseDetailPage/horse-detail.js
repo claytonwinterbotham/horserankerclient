@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { selectTrack, selectDate } from '../actions/index';
 import { bindActionCreators } from 'redux'; 
+import ReactTable from 'react-table'
 import _ from "lodash";
 
 class horseDetail extends Component {

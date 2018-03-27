@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import {BrowserRouter, Route, Switch, Link, Router } from 'react-router-dom';
 
-import HorseList from '../containers/horse-list';
-import HorseDetail from '../containers/horse-detail';
+import { HorseListPage } from '../HorseListPage';
+import HorseDetail from '../HorseDetailPage';
 import { history } from '../helpers';
 import { alertActions } from '../actions';
 import { PrivateRoute } from '../components';
@@ -37,7 +37,7 @@ class App extends React.Component {
                             <Route path="/login" component={LoginPage} />
                             <Route path="/register" component={RegisterPage} />    
                             <PrivateRoute path="/horsedetail" component={HorseDetail} />
-                            <PrivateRoute path="/horsedata" component={HorseList} />
+                            <PrivateRoute path="/horsedata" component={HorseListPage} />
                             <PrivateRoute exact path="/" component={HomePage} />
                         </Switch>
                     </div>  

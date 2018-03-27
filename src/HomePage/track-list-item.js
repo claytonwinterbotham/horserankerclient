@@ -17,6 +17,7 @@ class TrackListItem extends Component {
                     <li 
                         key={date.date}
                         onClick={() =>{
+                            event.stopPropagation();
                             this.props.selectDate(date)
                             this.props.fetchRaces(
                                         date.trackid,

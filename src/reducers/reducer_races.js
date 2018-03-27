@@ -3,7 +3,6 @@ import _ from "lodash";
 //state argument is not application state, only the state this reducer is reponsible for
 
 export default function(state = null, action) {
-    console.log("race" + action.payload)
     switch(action.type){
     case FETCH_RACES:
         return  action.payload.data

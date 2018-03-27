@@ -8,77 +8,11 @@ import _ from "lodash";
 
 class RaceList extends Component {
     constructor(props){
-        super(props);
-        this.state = {races: this.props.races,
-                      selected: null
-                    }                            
+        super(props);               
     }
-    renderRaces(){
-        // if(this.props.races){
-        // this.data = this.props.races
-        // console.log("in the racelist" + this.props.races)
-        // this.columns = [{
-        //     Header: 'Racenum',
-        //     accessor: 'racenum'
-        //   }, {
-        //     Header: 'Racetype',
-        //     accessor: 'racetype',  
-        //   }, {
-        //     Header: 'Distance',
-        //     accessor: 'distance',  
-        //   }, {
-        //     Header: 'PPturf', 
-        //     accessor: 'ppturf'
-        //   }, {
-        //     Header: 'Chartturf',
-        //     accessor: 'chartturf'
-        //   }, {
-        //     Header: 'Offturf', 
-        //     accessor: 'offturf'
-        //   }]
-        // }
-    //     return _.map(this.props.races, race => {
-    //         return(
-    //             <tr key={race.raceid}
-    //                 onClick={() => {
-    //                     this.props.selectRace(race, () => {
-    //                         //this.handleClick()
-    //                         this.props.fetchHorses(
-    //                             race.raceid,
-    //                             this.props.track.trackid,
-    //                             this.props.date.date)
-    //                             this.props.history.push("/horsedata")
-    //                         console.log("this is the selected race " + this.props.race)
-    //                     })
-    //                     }}>
-    //                 <td>
-    //                     {race.racenum}
-    //                 </td>
-    //                 <td>
-    //                     {race.racetype}
-    //                 </td>
-    //                 <td>
-    //                     {race.distance}
-    //                 </td>
-    //                 <td>
-    //                     {race.distance}
-    //                 </td>
-    //                 <td>
-    //                     {race.ppturf}
-    //                 </td>
-    //                 <td>
-    //                     {race.chartturf}
-    //                 </td>
-    //                 <td>
-    //                     {race.offturf}
-    //                 </td> 
-    //             </tr>
-    //         )  
-    //     });       
-     }
+   
 
     render() { 
-        const { races } = this.state;
         if(!this.props.track){
             return <div>Select a track and date to get started.</div>
         }
@@ -126,11 +60,13 @@ class RaceList extends Component {
                         // By default a custom 'onClick' handler will override this functionality.
                         // If you want to fire the original onClick handler, call the
                         // 'handleOriginal' function.
-                        this.props.fetchHorses(
-                            rowInfo.original.raceid,
-                            rowInfo.original.trackid,
-                            rowInfo.original.date)
-                            this.props.history.push("/horsedata")
+                        this.props.selectRace(rowInfo.original, () => {
+                            this.props.fetchHorses(
+                                rowInfo.original.raceid,
+                                rowInfo.original.trackid,
+                                rowInfo.original.date)
+                                this.props.history.push("/horsedata")
+                        })
                         if (handleOriginal) {
                           handleOriginal()
                         }

@@ -1,0 +1,64 @@
+
+                        
+
+
+
+
+
+
+
+
+
+
+
+
+
+[{
+Header:  'Horse Name'
+accessor: 'name'
+}, {
+Header:  'Post'
+accessor: 'possummary'
+}, {
+Header:  'Pace'
+accessor: 'e2AVGRANK'
+}, {
+Header:  'LRPace'
+accessor: 'eprank'
+}, {
+Header: 'PaceHx'
+accessor: 'hE2RANK'
+}, {
+Header: 'PLate' 
+accessor: 'lpavgrank'
+}, {
+Header:  'LRPLate
+accessor: 'lpRank'
+}, {
+Header:  'LateHx'
+accessor: 'hlprank'
+}, {
+Header:  'LR1Spd'
+accessor: 'lR1RANK'
+}, {
+Header:  'LR2Spd'
+accessor: 'lR2RANK'
+}, {
+Header:  'TopSpd'
+accessor: 'backspeedrank'
+}, {
+Header:  'HxAch'
+accessor: 'aclrank'
+}, {
+Header: 'Form'
+accessor: 'curclassrank'
+}, {
+Header: 'WinProb'
+accessor: 'primepowerrank'
+}, {
+Header: 'ML Odds'
+accessor: 'pP_ODDS'
+}, {
+Header: 'Finish'
+accessor: 'fin'
+}]

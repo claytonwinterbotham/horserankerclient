@@ -28,7 +28,6 @@ function fetchTracks(){
     const param = 'trackdata';
     const url = `${ROOT_URL}${param}`;
     const request = axios.get(url);
-    console.log("Fetch tracks" + request)
     return (dispatch) => {
         request.then(({data}) => {
             dispatch({ 
@@ -59,7 +58,6 @@ export function fetchRaces(trackid, date){
     const param = `racedata/${trackid}/${date}`;
     const url = `${ROOT_URL}${param}`;
     const request = axios.get(url);
-    console.log("fetch race" + request)
     return (dispatch) => {
         request.then(({data}) => {
             dispatch({ 
