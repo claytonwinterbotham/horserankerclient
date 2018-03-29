@@ -27,12 +27,11 @@ class App extends React.Component {
         console.log("App C.")
         const { alert } = this.props;
         return(
-            <div className="container fluid">
+            <div>
                 {alert.message &&
                     <div className={`alert ${alert.type}`}>{alert.message}</div>
                 }
                 <Router history={history}>
-                    <div className="row">
                         <Switch>
                             <Route path="/login" component={LoginPage} />
                             <Route path="/register" component={RegisterPage} />    
@@ -40,7 +39,6 @@ class App extends React.Component {
                             <PrivateRoute path="/horsedata" component={HorseListPage} />
                             <PrivateRoute exact path="/" component={HomePage} />
                         </Switch>
-                    </div>  
                 </Router>
             </div>    
         );

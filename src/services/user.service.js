@@ -10,13 +10,12 @@ export const userService = {
     delete: _delete
 };
 
-function login(username, password) {
+function login(email, password) {
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ Email: username, Password: password })
+        body: JSON.stringify({ Email: email, Password: password })
     };
-    console.log("fetch method" + username + " " + password)
     return fetch(config.apiUrl + '/tokenapi/login', requestOptions)
         .then(handleResponse, handleError)
         .then(user => {
@@ -57,7 +56,7 @@ function register(user) {
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(user)
+        body: JSON.stringify({Email: user.email, Password: user.password})
     };
 
     return fetch(config.apiUrl + '/tokenapi/register', requestOptions).then(handleResponse, handleError);
