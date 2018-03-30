@@ -31,25 +31,10 @@ class HomePage extends React.Component {
         console.log(JSON.stringify(user))
         return (
             <div className="">
-                <h1>Welcome {user.token.value.token}!</h1>
-                {/* <p>You're logged in with React and ASP.NET Core 2.0!!</p> */}
-                {/* <h3>All registered users:</h3> */}
-                {/* {users.loading && <em>Loading users...</em>}
-                {users.error && <span className="text-danger">ERROR: {users.error}</span>}
-                {users.items &&
-                    <ul>
-                        {users.items.map((user, index) =>
-                            <li key={user.id}>
-                                {user.firstName + ' ' + user.lastName}
-                                {
-                                    user.deleting ? <em> - Deleting...</em>
-                                    : user.deleteError ? <span className="text-danger"> - ERROR: {user.deleteError}</span>
-                                    : <span> - <a onClick={this.handleDeleteUser(user.id)}>Delete</a></span>
-                                }
-                            </li>
-                        )}
-                    </ul>
-                } */}
+                 <p>
+                    <Link to="/Admin">Admin Dashboard</Link>
+                </p>
+                <h1>Welcome {user.email}!</h1>
                 <p>
                     <Link to="/login">Logout</Link>
                 </p>

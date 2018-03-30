@@ -40,7 +40,7 @@ function getAll() {
         headers: authHeader()
     };
 
-    return fetch(config.apiUrl + '/users', requestOptions).then(handleResponse, handleError);
+    return fetch(config.apiUrl + '/tokenapi/ProtectedUsers', requestOptions).then(handleResponse, handleError);
 }
 
 function getById(id) {
