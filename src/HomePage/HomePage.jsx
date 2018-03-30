@@ -28,10 +28,10 @@ class HomePage extends React.Component {
 
     render() {
         const { user, users } = this.props;
-        console.log(JSON.stringify(user.email))
+        console.log(JSON.stringify(user))
         return (
             <div className="">
-                <h1>Welcome {user.email}!</h1>
+                <h1>Welcome {user.token.value.token}!</h1>
                 {/* <p>You're logged in with React and ASP.NET Core 2.0!!</p> */}
                 {/* <h3>All registered users:</h3> */}
                 {/* {users.loading && <em>Loading users...</em>}
