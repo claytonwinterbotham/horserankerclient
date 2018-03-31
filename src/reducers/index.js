@@ -11,6 +11,9 @@ import ActiveHorse from './reducer_active_horse';
 import { authentication }  from './reducer_authentication';
 import { registration } from './reducer_registration';
 import { users } from './reducer_users';
+import { roles } from './reducer_roles';
+import { userRoles } from './reducer_user_roles';
+import { assignRoles } from './reducer_assign_roles';
 import { alert } from './reducer_alert';
 
 
@@ -27,6 +30,9 @@ const rootReducer = combineReducers({
   authentication,
   registration,
   users,
+  roles,
+  userRoles,
+  assignRoles,
   alert
   
 });

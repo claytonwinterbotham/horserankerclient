@@ -28,23 +28,26 @@ class AdminPage extends React.Component {
         console.log(JSON.stringify(user))
         return (
             <div className="">
-                <h1>Admin Dashboard {user.email}!</h1>
+                <h3>Admin Dashboard {user.email}!</h3>
                 <h3>All registered users:</h3>
                 {users.loading && <em>Loading users...</em>}
                 {users.error && <span className="text-danger">ERROR: {users.error}</span>}
                 {users.items &&
-                    <ul>
+                    <div>
                         {users.items.map((user, index) =>
-                            <li key={user.id}>
-                                {user.email}
-                                {
-                                    user.deleting ? <em> - Deleting...</em>
-                                    : user.deleteError ? <span className="text-danger"> - ERROR: {user.deleteError}</span>
-                                    : <span> - <a onClick={this.handleDeleteUser(user.id)}>Delete</a></span>
-                                }
-                            </li>
+                            <div key={user.id} className="card" style={{width: 25 +"rem"}}>
+                                <div className="card-body">
+                                <h5 className="card-title">{user.email}</h5>
+                                <Link to={{ 
+                                     pathname: '/roles', 
+                                     state: {
+                                     user_id: user.id,
+                                     user_email: user.email 
+                                     } }} className="card-link">Assign Roles</Link>
+                                </div>
+                            </div>
                         )}
-                    </ul>
+                    </div>
                 }
                 <p>
                     <Link to="/">Back to Home</Link>

@@ -8,6 +8,9 @@ export const userActions = {
     logout,
     register,
     getAll,
+    getAllRoles,
+    getAllUserRoles,
+    assignRoles,
     delete: _delete
 };
 
@@ -75,6 +78,60 @@ function getAll() {
     function request() { return { type: userConstants.GETALL_REQUEST } }
     function success(users) { return { type: userConstants.GETALL_SUCCESS, users } }
     function failure(error) { return { type: userConstants.GETALL_FAILURE, error } }
+}
+
+function getAllRoles() {
+    return dispatch => {
+        dispatch(request());
+
+        userService.getAllRoles()
+            .then(
+                roles => dispatch(success(roles)),
+                error => dispatch(failure(error))
+            );
+    };
+
+    function request() { return { type: userConstants.GETALLROLES_REQUEST } }
+    function success(roles) { return { type: userConstants.GETALLROLES_SUCCESS, roles } }
+    function failure(error) { return { type: userConstants.GETALLROLES_FAILURE, error } }
+}
+
+function getAllUserRoles(email) {
+    return dispatch => {
+        dispatch(request(email));
+        console.log("this is the user role")
+        userService.getAllUserRoles(email)
+            .then(
+                userRoles => dispatch(success(userRoles)),
+                error => dispatch(failure(error))
+            );
+    };
+
+    function request() { return { type: userConstants.GETALLUSERROLES_REQUEST } }
+    function success(userRoles) { return { type: userConstants.GETALLUSERROLES_SUCCESS, userRoles } }
+    function failure(error) { return { type: userConstants.GETALLUSERROLES_FAILURE, error } }
+}
+
+function assignRoles(email, role, callback) {
+    return dispatch => {
+        dispatch(request());
+        userService.assignRoles(email, role)
+            .then(
+                message => { 
+                    dispatch(success()),
+                    callback()
+                },
+                error => {
+                    dispatch(failure(error));
+                    dispatch(alertActions.error(error));
+                },
+                
+            );
+    };
+
+    function request() { return { type: userConstants.ASSIGN_ROLES_REQUEST } }
+    function success(message) { return { type: userConstants.ASSIGN_ROLES_SUCCESS, message } }
+    function failure(error) { return { type: userConstants.ASSIGN_ROLES_FAILURE, error } }
 }
 
 // prefixed function name with underscore because delete is a reserved word in javascript

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import {BrowserRouter, Route, Switch, Link, Router } from 'react-router-dom';
 
 import { AdminPage } from '../AdminPage';
+import { RolesPage } from '../RolesPage';
 import { HorseListPage } from '../HorseListPage';
 import { HorseDetailPage } from '../HorseDetailPage';
 import { history } from '../helpers';
@@ -34,6 +35,7 @@ class App extends React.Component {
                 }
                 <Router history={history}>
                         <Switch>
+                            <PrivateRoute path="/Roles" component={RolesPage} />
                             <PrivateRoute path="/Admin" component={AdminPage} />
                             <Route path="/login" component={LoginPage} />
                             <Route path="/register" component={RegisterPage} />    

@@ -5,6 +5,9 @@ export const userService = {
     logout,
     register,
     getAll,
+    getAllRoles,
+    getAllUserRoles,
+    assignRoles,
     getById,
     update,
     delete: _delete
@@ -43,6 +46,24 @@ function getAll() {
     return fetch(config.apiUrl + '/tokenapi/ProtectedUsers', requestOptions).then(handleResponse, handleError);
 }
 
+function getAllRoles() {
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
+
+    return fetch(config.apiUrl + '/tokenapi/GetRoles', requestOptions).then(handleResponse, handleError);
+}
+
+function getAllUserRoles(email) {
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
+
+    return fetch(config.apiUrl + '/tokenapi/GetUserRoles/' + email, requestOptions).then(handleResponse, handleError);
+}
+
 function getById(id) {
     const requestOptions = {
         method: 'GET',
@@ -60,6 +81,16 @@ function register(user) {
     };
 
     return fetch(config.apiUrl + '/tokenapi/register', requestOptions).then(handleResponse, handleError);
+}
+
+function assignRoles(email, role) {
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ Email: email, Role: role })
+    };
+    return fetch(config.apiUrl + '/tokenapi/assign', requestOptions)
+        .then(handleResponse, handleError)
 }
 
 function update(user) {
