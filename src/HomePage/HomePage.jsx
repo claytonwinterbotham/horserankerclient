@@ -31,9 +31,9 @@ class HomePage extends React.Component {
         console.log(JSON.stringify(user))
         return (
             <div className="">
-                 <p>
-                    <Link to="/Admin">Admin Dashboard</Link>
-                </p>
+               
+               {user.role != null && user.role.role == "Admin" && <p><Link to="/Admin">Admin Dashboard</Link></p> }
+                     
                 <h1>Welcome {user.email}!</h1>
                 <p>
                     <Link to="/login">Logout</Link>
