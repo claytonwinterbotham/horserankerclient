@@ -11,6 +11,7 @@ export const userActions = {
     getAllRoles,
     getAllUserRoles,
     assignRoles,
+    removeRoles,
     delete: _delete
 };
 
@@ -47,10 +48,10 @@ function register(user) {
 
         userService.register(user)
             .then(
-                () => { 
+                user => { 
                     dispatch(success());
                     history.push('/login');
-                    dispatch(alertActions.success('Registration successful'));
+                    dispatch(alertActions.success('We just sent you an email. Please use it to confirm you email address.'));
                 },
                 error => {
                     dispatch(failure(error));
@@ -118,7 +119,7 @@ function assignRoles(email, role, callback) {
         userService.assignRoles(email, role)
             .then(
                 message => { 
-                    dispatch(success()),
+                    dispatch(success(message)),
                     callback()
                 },
                 error => {
@@ -132,6 +133,28 @@ function assignRoles(email, role, callback) {
     function request() { return { type: userConstants.ASSIGN_ROLES_REQUEST } }
     function success(message) { return { type: userConstants.ASSIGN_ROLES_SUCCESS, message } }
     function failure(error) { return { type: userConstants.ASSIGN_ROLES_FAILURE, error } }
+}
+
+function removeRoles(email, role, callback) {
+    return dispatch => {
+        dispatch(request());
+        userService.removeRoles(email, role)
+            .then(
+                message => { 
+                    dispatch(success(message)),
+                    callback()
+                },
+                error => {
+                    dispatch(failure(error));
+                    dispatch(alertActions.error(error));
+                },
+                
+            );
+    };
+
+    function request() { return { type: userConstants.REMOVE_ROLES_REQUEST } }
+    function success(message) { return { type: userConstants.REMOVE_ROLES_SUCCESS, message } }
+    function failure(error) { return { type: userConstants.REMOVE_ROLES_FAILURE, error } }
 }
 
 // prefixed function name with underscore because delete is a reserved word in javascript

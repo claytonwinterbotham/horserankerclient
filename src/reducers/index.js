@@ -14,6 +14,7 @@ import { users } from './reducer_users';
 import { roles } from './reducer_roles';
 import { userRoles } from './reducer_user_roles';
 import { assignRoles } from './reducer_assign_roles';
+import { removeRoles } from './reducer_remove_roles';
 import { alert } from './reducer_alert';
 
 
@@ -33,6 +34,7 @@ const rootReducer = combineReducers({
   roles,
   userRoles,
   assignRoles,
+  removeRoles,
   alert
   
 });

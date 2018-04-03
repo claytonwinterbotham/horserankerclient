@@ -24,9 +24,6 @@ class AdminPage extends React.Component {
 
     render() {
         const { user, users } = this.props;
-        console.log("role" + JSON.stringify(user))
-
-        
         if(user.role != null){
             if(user.role.role == "Admin"){
                 return (
@@ -40,18 +37,30 @@ class AdminPage extends React.Component {
                                 {users.items.map((user, index) =>
                                     
                                     <div key={user.id} className="card" style={{width: 25 +"rem"}}>
-                                    {console.log("user" +  JSON.stringify(user))}
                                         <div className="card-body">
                                         <h5 className="card-title">{user.email}</h5>
                                         <p className="card-text"
                                             onClick={() =>{
-                                                this.props.dispatch(
-                                                    userActions.assignRoles(user.email, "Admin", () =>{
-                                                        this.props.dispatch(
-                                                            userActions.getAll()
-                                                        )
-                                                    })
-                                                )}}
+                                                if(user.role == "Admin"){
+                                                    this.props.dispatch(
+                                                        // console.log("in remove role" + user.role),
+                                                        // console.log("in remove role" + user.email),
+                                                        userActions.removeRoles(user.email, "Admin", () =>{                                                            
+                                                            this.props.dispatch(
+                                                                userActions.getAll()
+                                                            )
+                                                        })
+                                                    )}
+                                                else{
+                                                    this.props.dispatch(
+                                                        userActions.assignRoles(user.email, "Admin", () =>{
+                                                            this.props.dispatch(
+                                                                userActions.getAll(),
+                                                                console.log("in assign role" + user.role)
+                                                            )
+                                                        })
+                                                    )}
+                                                }}
                                         >{user.role}</p>
                                         </div>
                                     </div>

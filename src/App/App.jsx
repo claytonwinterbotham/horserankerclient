@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import {BrowserRouter, Route, Switch, Link, Router } from 'react-router-dom';
-import { authorize } from 'react-router-role-authorization';
 import { AdminPage } from '../AdminPage';
 import { HorseListPage } from '../HorseListPage';
 import { HorseDetailPage } from '../HorseDetailPage';
@@ -12,6 +11,7 @@ import { PrivateRoute } from '../components';
 import { HomePage } from '../HomePage';
 import { LoginPage } from '../LoginPage';
 import { RegisterPage } from '../RegisterPage';
+import { EmailConfirmPage } from '../EmailConfirmPage';
 
 class App extends React.Component {
     constructor(props) {
@@ -36,7 +36,8 @@ class App extends React.Component {
                         <Switch>
                             <PrivateRoute path="/Admin" component={AdminPage} />
                             <Route path="/login" component={LoginPage} />
-                            <Route path="/register" component={RegisterPage} />    
+                            <Route path="/emailconfirm" component={EmailConfirmPage} />
+                            <Route path="/register" component={RegisterPage} />   
                             <PrivateRoute path="/horsedetail" component={HorseDetailPage} />
                             <PrivateRoute path="/horsedata" component={HorseListPage} />
                             <PrivateRoute exact path="/" component={HomePage} />

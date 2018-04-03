@@ -8,6 +8,7 @@ export const userService = {
     getAllRoles,
     getAllUserRoles,
     assignRoles,
+    removeRoles,
     getById,
     update,
     delete: _delete
@@ -73,6 +74,8 @@ function getById(id) {
     return fetch(config.apiUrl + '/users/' + _id, requestOptions).then(handleResponse, handleError);
 }
 
+
+
 function register(user) {
     const requestOptions = {
         method: 'POST',
@@ -80,7 +83,21 @@ function register(user) {
         body: JSON.stringify({Email: user.email, Password: user.password})
     };
 
-    return fetch(config.apiUrl + '/tokenapi/register', requestOptions).then(handleResponse, handleError);
+    return fetch(config.apiUrl + '/tokenapi/register', requestOptions)
+
+     .then(handleResponse, handleError)
+    // .then((response) =>{
+    //     return console.log("RESPONSE!!!!" + JSON.stringify(response));
+    // })
+    // .then(user => {
+    //     // login successful if there's a jwt token in the response
+    //     if (user && user.token.value.token) {
+    //         // store user details and jwt token in local storage to keep user logged in between page refreshes
+    //         localStorage.setItem('user', JSON.stringify(user));
+    //     }
+
+    //     return user;
+    // });
 }
 
 function assignRoles(email, role) {
@@ -90,6 +107,16 @@ function assignRoles(email, role) {
         body: JSON.stringify({ Email: email, Role: role })
     };
     return fetch(config.apiUrl + '/tokenapi/assign', requestOptions)
+        .then(handleResponse, handleError)
+}
+
+function removeRoles(email, role) {
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ Email: email, Role: role })
+    };
+    return fetch(config.apiUrl + '/tokenapi/removeuserrole', requestOptions)
         .then(handleResponse, handleError)
 }
 
