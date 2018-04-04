@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { selectDate, fetchRaces} from '../actions/index';
+import { dataActions } from '../actions';
 import { bindActionCreators } from 'redux'; 
 import _ from "lodash";
 
@@ -10,58 +10,47 @@ class TrackListItem extends Component {
         super(props);
     }
 
+ 
     renderListItem(){
-        return _.map(this.props.dates, date =>{
-            if(date.trackid == this.props.track.trackid){
+        const { dates } = this.props;
+        return dates.items.map(date =>{
                 return (
                     <li 
                         key={date.date}
                         onClick={() =>{
-                            event.stopPropagation();
-                            this.props.selectDate(date)
-                            this.props.fetchRaces(
-                                        date.trackid,
-                                        date.date
-                            )            
+                            this.props.dispatch(
+                                dataActions.selectDate(date),
+                                );
+                            this.props.dispatch(
+                                dataActions.fetchRaces(date.trackid,
+                                                           date.date)
+                                );    
                         }}>
                         {date.date}
                     </li>
                 );
-            }
-        });       
+            });     
     }
 
     render() {
-        if(this.props.track){
-            return (
-                <ul className="dropdown-menu" aria-labelledby="trackMenu">
-                    {this.renderListItem()}
-                </ul> 
-            )
-        }
-        return(
+        const { dates } = this.props;
+        return (
             <ul className="dropdown-menu" aria-labelledby="trackMenu">
-                <li>Loading...</li>
+                {dates.loading && <em>Loading dates...</em>}
+                {dates.error && <span className="text-danger">ERROR: {dates.error}</span>}
+                {dates.items && this.renderListItem()}
             </ul> 
         )
     }
 }
 
 function mapStateToProps(state) {
-    //Whatever is return will show up as props
-    //inside of TrackList
+    const { dates } = state
+    
     return { 
-        track: state.activeTrack,
-        date: state.activeDate,
-        dates: state.dates
-    }; // { weather } === { weather: weather }
+        dates,
+        track: state.activeTrack
+    };
 }
 
-function mapDispatchToProps(dispatch){
-    return bindActionCreators({
-        fetchRaces, 
-        selectDate
-     }, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(TrackListItem);
+export default connect(mapStateToProps)(TrackListItem);

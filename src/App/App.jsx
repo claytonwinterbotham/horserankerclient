@@ -11,7 +11,6 @@ import { PrivateRoute } from '../components';
 import { HomePage } from '../HomePage';
 import { LoginPage } from '../LoginPage';
 import { RegisterPage } from '../RegisterPage';
-import { EmailConfirmPage } from '../EmailConfirmPage';
 
 class App extends React.Component {
     constructor(props) {
@@ -36,7 +35,6 @@ class App extends React.Component {
                         <Switch>
                             <PrivateRoute path="/Admin" component={AdminPage} />
                             <Route path="/login" component={LoginPage} />
-                            <Route path="/emailconfirm" component={EmailConfirmPage} />
                             <Route path="/register" component={RegisterPage} />   
                             <PrivateRoute path="/horsedetail" component={HorseDetailPage} />
                             <PrivateRoute path="/horsedata" component={HorseListPage} />

@@ -1,12 +1,20 @@
-import { FETCH_DATES } from "../actions/index";
-import _ from "lodash";
-//state argument is not application state, only the state this reducer is reponsible for
+import { dataConstants } from '../constants';
 
-export default function(state = null, action) {
-    switch(action.type){
-    case FETCH_DATES:
-        return _.mapKeys(action.payload.data, 'date');
-    default:  
-        return state
-    }
+export function dates(state = {}, action) {
+  switch (action.type) {
+    case dataConstants.GETDATES_REQUEST:
+      return {
+        loading: true
+      };
+    case dataConstants.GETDATES_SUCCESS:
+      return {
+        items: action.dates
+      };
+    case dataConstants.GETDATES_FAILURE:
+      return { 
+        error: action.error
+      };    
+    default:
+      return state
+  }
 }

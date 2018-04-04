@@ -1,11 +1,20 @@
-import { FETCH_TRACKS } from "../actions/index";
-import _ from "lodash";
+import { dataConstants } from '../constants';
 
-export default function(state=null, action) {
-   switch (action.type) {
-    case FETCH_TRACKS:
-        return _.mapKeys(action.payload.data, 'trackid');
-    default:  
-        return state
-    }
+export function tracks(state = {}, action) {
+  switch (action.type) {
+    case dataConstants.GETTRACKS_REQUEST:
+      return {
+        loading: true
+      };
+    case dataConstants.GETTRACKS_SUCCESS:
+      return {
+        items: action.tracks
+      };
+    case dataConstants.GETTRACKS_FAILURE:
+      return { 
+        error: action.error
+      };    
+    default:
+      return state
+  }
 }

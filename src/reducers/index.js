@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
-import TracksReducer from './reducer_tracks';
-import DatesReducer from './reducer_dates';
-import RacesReducer from './reducer_races';
-import HorsesReducer from './reducer_horses';
-import HorseDetailReducer from './reducer_horse_detail';
+import { tracks } from './reducer_tracks';
+import { dates } from './reducer_dates';
+import { races } from './reducer_races';
+import { horses } from './reducer_horses';
+import { horse } from './reducer_horse_detail';
 import ActiveDate from './reducer_active_date';
 import ActiveTrack from './reducer_active_track';
 import ActiveRace from './reducer_active_race';
@@ -19,11 +19,11 @@ import { alert } from './reducer_alert';
 
 
 const rootReducer = combineReducers({
-  tracks: TracksReducer,
-  dates: DatesReducer,
-  races: RacesReducer,
-  horses: HorsesReducer,
-  horseDetail: HorseDetailReducer,
+  tracks,
+  dates,
+  races,
+  horses,
+  horse,
   activeTrack: ActiveTrack,
   activeDate: ActiveDate,
   activeRace: ActiveRace,

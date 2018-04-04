@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { selectTrack, fetchDates } from '../actions/index';
+import { dataActions } from '../actions';
 import { bindActionCreators } from 'redux'; 
 import TrackListItem from './track-list-item';
 import _ from "lodash";
@@ -10,18 +10,30 @@ class TrackList extends Component {
         super(props); 
     }
 
+    componentDidMount() {
+        this.props.dispatch(
+
+            dataActions.fetchTracks()
+    );
+    }
+
     renderList(){
+        const { tracks } = this.props;
         let className = "dropdown"
-         if(this.props.tracks){
+         if(tracks){
           className += " menu-active";
-        return _.map(this.props.tracks, track =>{
+        return tracks.items.map(track =>{
             return (
                 <div 
                     className={className}
                     key={track.trackid}
                     onClick={() =>{
-                        this.props.selectTrack(track)
-                        this.props.fetchDates(track.trackid)
+                        this.props.dispatch(
+                            dataActions.selectTrack(track),
+                            );
+                        this.props.dispatch(
+                            dataActions.fetchDates(track.trackid)
+                            );    
                     }
                     }>
 
@@ -36,27 +48,30 @@ class TrackList extends Component {
     }
 
     render() {
+        const { tracks } = this.props;
         return (
             <div className="btn-group-vertical list-group col-sm-3" role="group" aria-label="...">
-                {this.renderList()}
+                {tracks.loading && <em>Loading tracks...</em>}
+                {tracks.error && <span className="text-danger">ERROR: {tracks.error}</span>}
+                {tracks.items && this.renderList()}
             </div>
         )
     }
 }
 
 function mapStateToProps(state) {
-
+    const { tracks } = state;
     return {
-        track: state.activeTrack,
-        tracks: state.tracks
+        //track: state.activeTrack,
+        tracks
     }; 
 }
 
-function mapDispatchToProps(dispatch){
-    return bindActionCreators({
-        fetchDates, 
-        selectTrack
-     }, dispatch);
-}
+// function mapDispatchToProps(dispatch){
+//     return bindActionCreators({
+//         fetchDates, 
+//         selectTrack
+//      }, dispatch);
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TrackList);
+export default connect(mapStateToProps)(TrackList);

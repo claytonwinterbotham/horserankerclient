@@ -1,12 +1,22 @@
-import { FETCH_HORSE_DETAIL } from "../actions/index";
-import _ from "lodash";
-//state argument is not application state, only the state this reducer is reponsible for
+import { dataConstants } from '../constants';
 
-export default function(state = null, action) {
-    switch(action.type){
-    case FETCH_HORSE_DETAIL:
-    return action.payload.data
-    default:  
-        return state
-    }
+export function horse(state = {}, action) {
+  switch (action.type) {
+    case dataConstants.GETHORSEDETAIL_REQUEST:
+      return {
+        loading: true
+      };
+    case dataConstants.GETHORSEDETAIL_SUCCESS:
+      return {
+        items: action.horse
+      };
+    case dataConstants.GETHORSEDETAIL_FAILURE:
+      return { 
+        error: action.error
+      };    
+    default:
+      return state
+  }
 }
+
+

@@ -1,58 +1,53 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { selectTrack, selectDate } from '../actions/index';
 import { bindActionCreators } from 'redux'; 
 import ReactTable from 'react-table'
-import _ from "lodash";
 
 class HorseDetailPage extends Component {
     constructor(props){
         super(props);
     }
 
-
-
     render() { 
-        if(!this.props.horseDetail){
-            return <div>Loading...</div>
-        }
-        else{
-            return(
-
-                <div>
-                <div className="row">
-                    <div className="col-sm-2">    
-                        <Link to="/horsedata" className="btn btn-info back-button">
-                        Back
-                        </Link> 
-                    </div>
-                </div> 
-                <div className="row">
-                    <div>  
-                <ReactTable
+       const { horse } = this.props
+        return(
+            <div>
+            <div className="row">
+                <div className="col-sm-2">    
+                    <Link to="/horsedata" className="btn btn-info back-button">
+                    Back
+                    </Link> 
+                </div>
+            </div> 
+            <div className="row">
+                <div className="col-sm-12">
+                {horse.loading && <em>Loading Horses...</em>}
+                {horse.error && <span className="text-danger">ERROR: {horse.error}</span>}
+                {horse.items &&      
+                    <ReactTable
                     data ={[{
-                        name: this.props.horseDetail.name,
-                        possummary: this.props.horseDetail.possummary,
-                        STYLE: this.props.horseDetail.style,
-                        PTS: this.props.horseDetail.pts,
-                        E1AVGRANK: this.props.horseDetail.e1AVGRANK,
-                        E2AVGRANK: this.props.horseDetail.e2AVGRANK,
-                        EPRANK: this.props.horseDetail.eprank,
-                        HE2RANK: this.props.horseDetail.hE2RANK,
-                        lpavgrank: this.props.horseDetail.lpavgrank,
-                        lpRank: this.props.horseDetail.lpRank,
-                        hlprank: this.props.horseDetail.hlprank,
-                        lR1RANK: this.props.horseDetail.lR1RANK,
-                        lR2RANK: this.props.horseDetail.lR2RANK,
-                        lR3RANK: this.props.horseDetail.lR3RANK,
-                        backspeedrank: this.props.horseDetail.backspeedrank,
-                        LR1Rank: this.props.horseDetail.lR1RANK,
-                        aclrank: this.props.horseDetail.aclrank,
-                        curclassrank: this.props.horseDetail.curclassrank,
-                        primepowerrank: this.props.horseDetail.primepowerrank,
-                        pP_ODDS: this.props.horseDetail.pP_ODDS
-                      }]}
+                        name: horse.items.name,
+                        possummary: horse.items.possummary,
+                        STYLE: horse.items.style,
+                        PTS: horse.items.pts,
+                        E1AVGRANK: horse.items.e1AVGRANK,
+                        E2AVGRANK: horse.items.e2AVGRANK,
+                        EPRANK: horse.items.eprank,
+                        HE2RANK: horse.items.hE2RANK,
+                        lpavgrank: horse.items.lpavgrank,
+                        lpRank: horse.items.lpRank,
+                        hlprank: horse.items.hlprank,
+                        lR1RANK: horse.items.lR1RANK,
+                        lR2RANK: horse.items.lR2RANK,
+                        lR3RANK: horse.items.lR3RANK,
+                        backspeedrank: horse.items.backspeedrank,
+                        LR1Rank: horse.items.lR1RANK,
+                        aclrank: horse.items.aclrank,
+                        curclassrank: horse.items.curclassrank,
+                        primepowerrank: horse.items.primepowerrank,
+                        pP_ODDS: horse.items.pP_ODDS
+                    }]}
 
                     columns={[{
                         Header:  'Horse Name',
@@ -121,32 +116,18 @@ class HorseDetailPage extends Component {
                     defaultPageSize={1}
                     className="-striped -highlight"
                     showPagination = {false}
-                    // getTdProps={(state, rowInfo, column, instance) => {
-                    // return {
-                    //     onClick: (e, handleOriginal) => {
-                    //     console.log('A Td Element was clicked!')
-                    //     console.log('it produced this event:', e)
-                    //     console.log('It was in this column:', column)
-                    //     console.log('It was in this row:', rowInfo)
-                    //     console.log('It was in this table instance:', instance)
-                    //     if (handleOriginal) {
-                    //         handleOriginal()
-                    //     }
-                    //     }
-                    // }
-                    // }}
-                    />
-                    </div>
+                    />}
                 </div>
-            </div> 
-            )
+            </div>
+        </div> 
+        )
         }
     }
-}
 
 function mapStateToProps(state) {
+    const { horse } = state;
     return {
-        horseDetail: state.horseDetail
+        horse
     }
 }
 

@@ -14,14 +14,6 @@ class HomePage extends React.Component {
         super(props);   
     }
 
-    componentDidMount() {
-        this.props.dispatch(
-            //userActions.getAll(),
-            dataActions.fetchTracks()
-    );
-        //this.props.dispatch(dataActions.fetchTracks());
-    }
-
     handleDeleteUser(id) {
         return (e) => this.props.dispatch(userActions.delete(id));
     }

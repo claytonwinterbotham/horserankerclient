@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { selectTrack, selectDate, selectHorse, fetchHorseDetail } from '../actions/index';
+import { dataActions } from '../actions';
 import { bindActionCreators } from 'redux'; 
 import ReactTable from 'react-table'
 import _ from "lodash";
@@ -12,23 +12,23 @@ class HorseListPage extends Component {
     }
 
     render() { 
-        if(!this.props.horses){
-            return <div>Loading...</div>
-        }
-        else if(this.props.horses){
-            return(
-            <div>
-                <div className="row">
-                    <div className="col-sm-2">    
-                        <Link to="/" className="btn btn-info back-button">
-                        Back
-                        </Link> 
-                    </div>
-                </div> 
-                <div className="row">
-                    <div>  
-                <ReactTable
-                    data={this.props.horses}
+        const {horses} = this.props
+        return(  
+        <div>    
+            <div className="row">
+                <div className="col-sm-2">    
+                    <Link to="/" className="btn btn-info back-button">
+                    Back
+                    </Link> 
+                </div>
+            </div> 
+            <div className="row">
+                <div className="col-sm-12">
+                    {horses.loading && <em>Loading Horses...</em>}
+                    {horses.error && <span className="text-danger">ERROR: {horses.error}</span>}
+                    {horses.items &&      
+                    <ReactTable
+                    data={horses.items}
                     columns={[{
                         Header:  'Horse Name',
                         accessor: 'name'
@@ -83,53 +83,37 @@ class HorseListPage extends Component {
                     getTdProps={(state, rowInfo, column, instance) => {
                     return {
                         onClick: (e, handleOriginal) => {
-                        console.log('A Td Element was clicked!')
-                        console.log('it produced this event:', e)
-                        console.log('It was in this column:', column)
-                        console.log('It was in this row:', rowInfo)
-                        console.log('It was in this table instance:', instance)
-                        // IMPORTANT! React-Table uses onClick internally to trigger
-                        // events like expanding SubComponents and pivots.
-                        // By default a custom 'onClick' handler will override this functionality.
-                        // If you want to fire the original onClick handler, call the
-                        // 'handleOriginal' function.
                         
-                        this.props.selectHorse(rowInfo.original, () => {
-                                //this.handleClick()
-                                this.props.fetchHorseDetail(
-                                    rowInfo.original.raceid,
-                                    rowInfo.original.horseid)
+                            this.props.dispatch(
+                                dataActions.selectHorse(rowInfo.original, () => {
+
+                                    this.props.dispatch(
+                                        dataActions.fetchHorseDetail(
+                                            rowInfo.original.raceid,
+                                            rowInfo.original.horseid)
+                                    )
                                     this.props.history.push("/horsedetail")
-                                console.log("this is the selected race " + this.props.horse)
-                        })
+                                })
+                            )      
                         if (handleOriginal) {
                             handleOriginal()
                         }
                         }
                     }
-                    }}/>
+                    }}/>}
                     </div>
                 </div>
-            </div>
-            )
-        }
+        </div>
+        )
     }
 }
-
 
 function mapStateToProps(state) {
+    const { horses } = state
     return {
-        race: state.activeRace,
-        horses: state.horses
+        horses
     }
 }
 
-function mapDispatchToProps(dispatch){
-    return bindActionCreators({
-        fetchHorseDetail, 
-        selectHorse
-     }, dispatch);
-
-}
-const connectedHorseListPage = connect(mapStateToProps, mapDispatchToProps)(HorseListPage);
+const connectedHorseListPage = connect(mapStateToProps)(HorseListPage);
 export { connectedHorseListPage as HorseListPage };
