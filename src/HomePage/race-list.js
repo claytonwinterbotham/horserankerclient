@@ -15,53 +15,53 @@ class RaceList extends Component {
     render() { 
         const { races, track } = this.props;
         return(
-            <div>        
-            {races.loading && <em>Loading Races...</em>}
-            {races.error && <span className="text-danger">ERROR: {races.error}</span>}
-            {races.items &&      
-            <ReactTable
-                data={races.items}
-                columns={[{
-                Header: 'Racenum',
-                accessor: 'racenum'
-                }, {
-                Header: 'Racetype',
-                accessor: 'racetype',  
-                }, {
-                Header: 'Distance',
-                accessor: 'distance',  
-                }, {
-                Header: 'PPturf', 
-                accessor: 'ppturf'
-                }, {
-                Header: 'Chartturf',
-                accessor: 'chartturf'
-                }, {
-                Header: 'Offturf', 
-                accessor: 'offturf'
-                }] }
-                defaultPageSize={10}
-                className="-striped -highlight"
-                getTdProps={(state, rowInfo, column, instance) => {
-                return {
-                  onClick: (e, handleOriginal) => {
-                      this.props.dispatch(
-                        dataActions.selectRace(rowInfo.original, () => {
-                            this.props.dispatch(
-                            dataActions.fetchHorses(
-                                rowInfo.original.raceid,
-                                rowInfo.original.trackid,
-                                rowInfo.original.date)
-                            )
-                            this.props.history.push("/horsedata")
-                        })
-                      )
-                    if (handleOriginal) {
-                      handleOriginal()
+            <div className="">        
+                {races.loading && <em>Loading Races...</em>}
+                {races.error && <span className="text-danger">ERROR: {races.error}</span>}
+                {races.items &&      
+                <ReactTable
+                    data={races.items}
+                    columns={[{
+                    Header: 'Racenum',
+                    accessor: 'racenum'
+                    }, {
+                    Header: 'Racetype',
+                    accessor: 'racetype',  
+                    }, {
+                    Header: 'Distance',
+                    accessor: 'distance',  
+                    }, { 
+                    Header: 'PPturf', 
+                    accessor: 'ppturf'
+                    }, {
+                    Header: 'Chartturf',
+                    accessor: 'chartturf'
+                    }, {
+                    Header: 'Offturf', 
+                    accessor: 'offturf'
+                    }] }
+                    defaultPageSize={10}
+                    className="-striped -highlight"
+                    getTdProps={(state, rowInfo, column, instance) => {
+                    return {
+                    onClick: (e, handleOriginal) => {
+                        this.props.dispatch(
+                            dataActions.selectRace(rowInfo.original, () => {
+                                this.props.dispatch(
+                                dataActions.fetchHorses(
+                                    rowInfo.original.raceid,
+                                    rowInfo.original.trackid,
+                                    rowInfo.original.date)
+                                )
+                                this.props.history.push("/horsedata")
+                            })
+                        )
+                        if (handleOriginal) {
+                        handleOriginal()
+                        }
                     }
-                  }
-                }
-                }}/>}
+                    }
+                    }}/>}
            </div>   
         )
     }

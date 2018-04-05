@@ -19,14 +19,12 @@ class TrackList extends Component {
 
     renderList(){
         const { tracks } = this.props;
-        let className = "dropdown"
-         if(tracks){
-          className += " menu-active";
         return tracks.items.map(track =>{
             return (
-                <div 
-                    className={className}
-                    key={track.trackid}
+                <div className="card" key={track.trackid}>
+                <div className="card-header" role="tab" id={"heading" + track.trackid}>
+                  <h5 className="mb-0">
+                    <button className="btn btn-link" data-toggle="collapse" data-target={"#collapse" + track.trackid} data-parent="#accordion" href={"#collapse" + track.trackid} aria-expanded="false" aria-controls={"collapse" + track.trackid}
                     onClick={() =>{
                         this.props.dispatch(
                             dataActions.selectTrack(track),
@@ -36,21 +34,20 @@ class TrackList extends Component {
                             );    
                     }
                     }>
-
-                <button className="btn btn-default dropdown-toggle" type="button" id="trackMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                     {track.name}
-                </button>
-                    <TrackListItem/>
+                    </button>
+                  </h5>
+                </div> 
+                  <TrackListItem trackid = {track.trackid}/>
                 </div>
             );
         });
-    }
     }
 
     render() {
         const { tracks } = this.props;
         return (
-            <div className="btn-group-vertical list-group col-sm-3" role="group" aria-label="...">
+            <div id="accordion" role="tablist" aria-multiselectable="true">
                 {tracks.loading && <em>Loading tracks...</em>}
                 {tracks.error && <span className="text-danger">ERROR: {tracks.error}</span>}
                 {tracks.items && this.renderList()}

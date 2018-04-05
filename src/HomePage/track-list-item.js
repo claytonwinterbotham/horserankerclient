@@ -6,6 +6,7 @@ import { bindActionCreators } from 'redux';
 import _ from "lodash";
 
 class TrackListItem extends Component {
+
     constructor(props){
         super(props);
     }
@@ -15,7 +16,7 @@ class TrackListItem extends Component {
         const { dates } = this.props;
         return dates.items.map(date =>{
                 return (
-                    <li 
+                    <span
                         key={date.date}
                         onClick={() =>{
                             this.props.dispatch(
@@ -27,19 +28,20 @@ class TrackListItem extends Component {
                                 );    
                         }}>
                         {date.date}
-                    </li>
+                    </span>
                 );
-            });     
-    }
-
+            })
+        }    
     render() {
         const { dates } = this.props;
         return (
-            <ul className="dropdown-menu" aria-labelledby="trackMenu">
+            <div id={"collapse" + this.props.trackid} data-parent="#accordion" className="collapse" role="tabpanel" aria-labelledby={"heading" + this.props.trackid}>
+            <div className="card-block">
                 {dates.loading && <em>Loading dates...</em>}
                 {dates.error && <span className="text-danger">ERROR: {dates.error}</span>}
                 {dates.items && this.renderListItem()}
-            </ul> 
+            </div>
+          </div>
         )
     }
 }
