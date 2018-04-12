@@ -2,6 +2,7 @@
 html, body{
     width: 100vw;
     height: 100vh;
+    font-family: 'Roboto', sans-serif;
 }
 body{
 }
@@ -13,9 +14,10 @@ body{
 }
 
 .page-header{
-    background: #F7971E;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #FFD200, #F7971E);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #FFD200, #F7971E); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #232526;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #414345, #232526);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #414345, #232526); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
     
     margin: 0;
     height: 100px;
@@ -23,6 +25,47 @@ body{
 
 .btn{
     width: 100%;
+}
+
+.logo{
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    left: .7em;
+    bottom: .5em;
+    color:#89cff0;
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 3em;
+    text-shadow:  
+    4px 4px 4px #000;
+}
+
+.logout-btn{
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    right: 2em;
+    bottom: .5em;
+    color:#89cff0
+   
+}
+
+.page-header{
+    position: relative;
+    -webkit-box-shadow: 1px 5px 3px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 1px 5px 3px -1px rgba(0,0,0,0.75);
+    box-shadow: 1px 5px 3px -1px rgba(0,0,0,0.75);
+}
+
+.welcome-message{
+    padding: 0;
+    margin: 0;
+    margin-top: 1.2em;
+    position: absolute;
+    right: 2em;
+    bottom: 1.8em;
+    color: #BDB959;
+    font-style: italic;
 }
 
 .login-page{
@@ -38,4 +81,16 @@ body{
 
 .back-button{
     margin: 1em;
+}
+
+.home-content{
+    background-color: #414345;
+}
+
+.main-content{
+    margin-top: 2em;
+}
+
+.track-list{
+    border: 2px solid #000;
 }

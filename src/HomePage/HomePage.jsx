@@ -3,10 +3,9 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { userActions, dataActions } from '../actions';
-
+import {Header} from './Header';
 import TrackList from './track-list';
 import RaceList from './race-list';
-//import { fetchTracks, fetchDates, fetchRaces } from '../actions/index';
 import { bindActionCreators } from 'redux'; 
 
 class HomePage extends React.Component {
@@ -22,17 +21,16 @@ class HomePage extends React.Component {
         const { user, users } = this.props;
         console.log(JSON.stringify(user))
         return (
-            <div className="">
-               
-               {user.role != null && user.role.role == "Admin" && <p><Link to="/Admin">Admin Dashboard</Link></p> }
-                     
-                <h1>Welcome {user.email}!</h1>
-                <p>
-                    <Link to="/login">Logout</Link>
-                </p>
-                <TrackList />
-                <RaceList />
-  
+            <div id="home" className="home-content container-fluid">
+                    <Header />
+                <div className="row main-content">
+                    <div className="col-xl-3 col-lg-3 col-md-12 col-sm-12 track-list">
+                        <TrackList />
+                    </div>
+                    <div className="col-xl-9 col-lg-9 col-md-12 col-sm-12">
+                        <RaceList />
+                    </div>
+                </div>
             </div>
         );
     }
