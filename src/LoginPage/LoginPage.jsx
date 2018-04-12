@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { userActions } from '../actions';
-import {Header} from '../Components/Header';
+
 class LoginPage extends React.Component {
     constructor(props) {
         super(props);
@@ -41,12 +41,17 @@ class LoginPage extends React.Component {
         const { loggingIn } = this.props;
         const { email, password, submitted, user } = this.state;
         return (
-            <div className="container-fuil login-page">
-            <Header/>
+            <div className="container-fluid login-page">
+                <div className="row">
+                    <div className=" col-12 page-header">
+                    <h1 className="logo">Horse Ranker</h1>
+                    </div>
+                </div>
                 <div className="row login-form">
                     <div className="col-md-4 col-md-offset-4">
 
                         <form name="form" onSubmit={this.handleSubmit}>
+                        <h2>Login</h2>
                             <div className={'form-group' + (submitted && !email ? ' has-error' : '')}>
                                 <label htmlFor="email">Email</label>
                                 <input type="text" className="form-control" name="email" value={email} onChange={this.handleChange} />

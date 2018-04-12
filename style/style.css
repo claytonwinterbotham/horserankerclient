@@ -15,11 +15,13 @@ body{
 }
 
 .page-header{
+    position: relative;
+    -webkit-box-shadow: 1px 5px 3px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 1px 5px 3px -1px rgba(0,0,0,0.75);
+    box-shadow: 1px 5px 3px -1px rgba(0,0,0,0.75);
     background: #232526;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #414345, #232526);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #414345, #232526); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    
-    
     margin: 0;
     height: 100px;
 }
@@ -51,12 +53,6 @@ body{
    
 }
 
-.page-header{
-    position: relative;
-    -webkit-box-shadow: 1px 5px 3px -1px rgba(0,0,0,0.75);
-    -moz-box-shadow: 1px 5px 3px -1px rgba(0,0,0,0.75);
-    box-shadow: 1px 5px 3px -1px rgba(0,0,0,0.75);
-}
 
 .admin-dashboard-button{
     padding: 0;
@@ -79,7 +75,7 @@ body{
     font-style: italic;
 }
 
-.login-page{
+.login-page, .register-page{
     background-color: #000;
     background-image: url("../src/images/background.jpg");
     background-position: center;
@@ -89,19 +85,19 @@ body{
     width: 100%;
 }
 
-.login-page form{
+.login-page form, .register-page form{
     color: #fff;
     text-shadow: 1px 1px 1px #000; 
     font-size: 1em;
     padding-top: 5rem;
 }
 
-.login-page form button{
+.login-page form button, .register-page form button{
     background: #BDB959; 
     border-color: #BDB959 
 }
 
-.login-page form button:hover{
+.login-page form button:hover, .register-page form button:hover{
     background: #A3A055;
     border-color: #BDB959  
 }
@@ -119,6 +115,18 @@ body{
 .home-content{
     background-color: #414345;
     padding: 0 3em;
+}
+
+.admin-page{
+    background-color: #414345;
+    padding: 0 3em;
+    color: #fff;
+    text-shadow: 1px 1px 1px #000; 
+    font-size: 1em;
+}
+
+.admin-content{
+    padding-top: 2em;
 }
 
 .horse-list-content{

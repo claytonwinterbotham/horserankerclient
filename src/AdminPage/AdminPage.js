@@ -2,8 +2,6 @@ import React from 'react';
 import { BrowserRouter, Route, Switch, Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { userActions, dataActions } from '../actions';
-
-//import { fetchTracks, fetchDates, fetchRaces } from '../actions/index';
 import { bindActionCreators } from 'redux'; 
 
 class AdminPage extends React.Component {
@@ -27,50 +25,60 @@ class AdminPage extends React.Component {
         if(user.role != null){
             if(user.role.role == "Admin"){
                 return (
-                    <div className="loading">
-                        <h3>Admin Dashboard {user.email}!</h3>
-                        <h3>All registered users:</h3>
-                        {users.loading && <em>Loading users...</em>}
-                        {users.error && <span className="text-danger">ERROR: {users.error}</span>}
-                        {users.items &&
-                            <div>
-                                {users.items.map((user, index) =>
-                                    
-                                    <div key={user.id} className="card" style={{width: 25 +"rem"}}>
-                                        <div className="card-body">
-                                        <h5 className="card-title">{user.email}</h5>
-                                        <p className="card-text"
-                                            onClick={() =>{
-                                                if(user.role == "Admin"){
-                                                    this.props.dispatch(
-                                                        // console.log("in remove role" + user.role),
-                                                        // console.log("in remove role" + user.email),
-                                                        userActions.removeRoles(user.email, "Admin", () =>{                                                            
+                        <div className="container-fluid admin-page">
+                            <div className="row">
+                        <div className=" col-12 page-header">
+                        <h1 className="logo">Horse Ranker</h1>
+                        <p className="welcome-message">Welcome {user.email}!</p>
+                        <Link className="logout-btn text-right" to="/login">Logout</Link>
+                        </div>
+                        </div>
+                        <div className="row admin-content">
+                            <div className="loading">
+                                <h3>All registered users:</h3>
+                                {users.loading && <em>Loading users...</em>}
+                                {users.error && <span className="text-danger">ERROR: {users.error}</span>}
+                                {users.items &&
+                                    <div>
+                                        {users.items.map((user, index) =>
+                                            
+                                            <div key={user.id} className="card" style={{width: 25 +"rem"}}>
+                                                <div className="card-body">
+                                                <h5 className="card-title">{user.email}</h5>
+                                                <p className="card-text"
+                                                    onClick={() =>{
+                                                        if(user.role == "Admin"){
                                                             this.props.dispatch(
-                                                                userActions.getAll()
-                                                            )
-                                                        })
-                                                    )}
-                                                else{
-                                                    this.props.dispatch(
-                                                        userActions.assignRoles(user.email, "Admin", () =>{
+                                                                // console.log("in remove role" + user.role),
+                                                                // console.log("in remove role" + user.email),
+                                                                userActions.removeRoles(user.email, "Admin", () =>{                                                            
+                                                                    this.props.dispatch(
+                                                                        userActions.getAll()
+                                                                    )
+                                                                })
+                                                            )}
+                                                        else{
                                                             this.props.dispatch(
-                                                                userActions.getAll(),
-                                                                console.log("in assign role" + user.role)
-                                                            )
-                                                        })
-                                                    )}
-                                                }}
-                                        >{user.role}</p>
-                                        </div>
+                                                                userActions.assignRoles(user.email, "Admin", () =>{
+                                                                    this.props.dispatch(
+                                                                        userActions.getAll(),
+                                                                        console.log("in assign role" + user.role)
+                                                                    )
+                                                                })
+                                                            )}
+                                                        }}
+                                                >{user.role}</p>
+                                                </div>
+                                            </div>
+                                        )}
                                     </div>
-                                )}
+                                }
+                                <p>
+                                    <Link to="/">Back to Home</Link>
+                                </p>
                             </div>
-                        }
-                        <p>
-                            <Link to="/">Back to Home</Link>
-                        </p>
-                    </div>
+                        </div>
+                    </div>        
                 );
             }    
     }
