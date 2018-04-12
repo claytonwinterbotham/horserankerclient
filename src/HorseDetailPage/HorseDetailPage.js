@@ -23,8 +23,8 @@ class HorseDetailPage extends Component {
                 </div>
             </div> 
             <div className="row">
-                <div className="col-sm-12">
-                {horse.loading && <em>Loading Horses...</em>}
+                <div className="col-sm-12 loading">
+                {horse.loading && <em>Loading Horse...</em>}
                 {horse.error && <span className="text-danger">ERROR: {horse.error}</span>}
                 {horse.items &&      
                     <ReactTable

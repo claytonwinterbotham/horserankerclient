@@ -27,7 +27,7 @@ class AdminPage extends React.Component {
         if(user.role != null){
             if(user.role.role == "Admin"){
                 return (
-                    <div className="">
+                    <div className="loading">
                         <h3>Admin Dashboard {user.email}!</h3>
                         <h3>All registered users:</h3>
                         {users.loading && <em>Loading users...</em>}

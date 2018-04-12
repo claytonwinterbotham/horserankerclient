@@ -25,7 +25,7 @@ class HorseListPage extends Component {
                 </div>
             </div> 
             <div className="row">
-                <div className="col-sm-12">
+                <div className="col-sm-12 loading">
                     {horses.loading && <em>Loading Horses...</em>}
                     {horses.error && <span className="text-danger">ERROR: {horses.error}</span>}
                     {horses.items &&      

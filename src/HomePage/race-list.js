@@ -15,7 +15,7 @@ class RaceList extends Component {
     render() { 
         const { races, track } = this.props;
         return(
-            <div className="">        
+            <div className="loading">        
                 {races.loading && <em>Loading Races...</em>}
                 {races.error && <span className="text-danger">ERROR: {races.error}</span>}
                 {races.items &&      

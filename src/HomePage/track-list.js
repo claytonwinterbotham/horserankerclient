@@ -47,7 +47,7 @@ class TrackList extends Component {
     render() {
         const { tracks } = this.props;
         return (
-            <div id="accordion" role="tablist" aria-multiselectable="true">
+            <div className="loading" id="accordion" role="tablist" aria-multiselectable="true">
                 {tracks.loading && <em>Loading tracks...</em>}
                 {tracks.error && <span className="text-danger">ERROR: {tracks.error}</span>}
                 {tracks.items && this.renderList()}
