@@ -32,11 +32,16 @@ class HorseListPage extends Component {
                     <ReactTable
                     data={horses.items}
                     columns={[{
+                        Header:  'Post',
+                        accessor: 'possummary',
+                        
+                        Cell: (row) => {
+                            return <div><img height={34} src={require('../images/horsenumbers/' + row.value + '.png')}/></div>
+                            console.log(JSON.stringify("Row original" + row.value))
+                          },
+                        },{
                         Header:  'Horse Name',
                         accessor: 'name'
-                        }, {
-                        Header:  'Post',
-                        accessor: 'possummary'
                         }, {
                         Header:  'Pace',
                         accessor: 'e2AVGRANK'
