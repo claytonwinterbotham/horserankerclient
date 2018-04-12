@@ -5,6 +5,7 @@ html, body{
     font-family: 'Roboto', sans-serif;
 }
 body{
+    background-color: #414345;
 }
 
 .container{
@@ -85,6 +86,17 @@ body{
 
 .home-content{
     background-color: #414345;
+    padding: 0 3em;
+}
+
+.horse-list-content{
+    background-color: #414345;
+    padding: 0 3em;
+}
+
+.horse-detail-content{
+    background-color: #414345;
+    padding: 0 3em;
 }
 
 .main-content{
@@ -110,6 +122,15 @@ body{
 }
 .card-block {
     background: #a3a055;
+    text-align: center;
+    color: #fff;
+    text-shadow: 1px 1px 1px #000; 
+    font-size: 1.1rem;
+
+}
+
+.date-item{
+    cursor: pointer;
 
 }
 
@@ -139,7 +160,7 @@ body{
     background-color: transparent;
 }
 .card-header .btn {
-    color: #fff;
+    color: #f2a3ad;
     text-shadow: 1px 1px 1px #000; 
     font-size: 1.1em;
     display: inline-block;
@@ -153,7 +174,7 @@ body{
     user-select: none;
     border: 1px solid transparent;
     padding: .375rem .75rem;
-    font-size: 1rem;
+    font-size: 1.2rem;
     line-height: 1.5;
     border-radius: .25rem;
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;

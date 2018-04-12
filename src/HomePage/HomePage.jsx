@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { userActions, dataActions } from '../actions';
-import {Header} from './Header';
+import {Header} from '../Components/Header';
 import TrackList from './track-list';
 import RaceList from './race-list';
 import { bindActionCreators } from 'redux'; 
@@ -24,10 +24,10 @@ class HomePage extends React.Component {
             <div id="home" className="home-content container-fluid">
                     <Header />
                 <div className="row main-content">
-                    <div className="col-xl-3 col-lg-3 col-md-12 col-sm-12 track-list">
+                    <div className="col-xl-2 col-lg-2 col-md-12 col-sm-12 track-list">
                         <TrackList />
                     </div>
-                    <div className="col-xl-9 col-lg-9 col-md-12 col-sm-12">
+                    <div className="col-xl-10 col-lg-10 col-md-12 col-sm-12">
                         <RaceList />
                     </div>
                 </div>

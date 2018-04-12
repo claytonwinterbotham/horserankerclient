@@ -16,7 +16,7 @@ class TrackListItem extends Component {
         const { dates } = this.props;
         return dates.items.map(date =>{
                 return (
-                    <span
+                    <p className="date-item"
                         key={date.date}
                         onClick={() =>{
                             this.props.dispatch(
@@ -28,7 +28,7 @@ class TrackListItem extends Component {
                                 );    
                         }}>
                         {date.date}
-                    </span>
+                    </p>
                 );
             })
         }    

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux'; 
 import ReactTable from 'react-table'
+import {Header} from '../Components/Header';
 
 class HorseDetailPage extends Component {
     constructor(props){
@@ -12,7 +13,8 @@ class HorseDetailPage extends Component {
     render() { 
        const { horse } = this.props
         return(
-            <div>
+            <div className=" horse-detail-content container-fluid"> 
+            <Header />   
             <div className="row">
                 <div className="col-sm-2">    
                     <Link to="/horsedata" className="btn btn-info back-button">

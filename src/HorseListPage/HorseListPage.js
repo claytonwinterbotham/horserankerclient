@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { dataActions } from '../actions';
 import { bindActionCreators } from 'redux'; 
+import {Header} from '../Components/Header';
 import ReactTable from 'react-table'
 import _ from "lodash";
 
@@ -14,7 +15,8 @@ class HorseListPage extends Component {
     render() { 
         const {horses} = this.props
         return(  
-        <div>    
+        <div className=" horse-list-content container-fluid"> 
+            <Header />   
             <div className="row">
                 <div className="col-sm-2">    
                     <Link to="/" className="btn btn-info back-button">
