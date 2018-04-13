@@ -1,4 +1,4 @@
 export const config = {
-    apiUrl: 'http://localhost:57893',
-    horseApiUrl: 'http://localhost:57893/api/'
+    apiUrl: 'https://admin.horseranker.com/',
+    horseApiUrl: 'https://admin.horseranker.com/api/'
 };
