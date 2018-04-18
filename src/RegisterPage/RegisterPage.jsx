@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-
 import { userActions } from '../actions';
 
 class RegisterPage extends React.Component {
@@ -20,6 +19,8 @@ class RegisterPage extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+
+
 
     handleChange(event) {
         const { name, value } = event.target;
@@ -44,7 +45,7 @@ class RegisterPage extends React.Component {
     }
 
     render() {
-        const { registering  } = this.props;
+        const { registering, alert  } = this.props;
         const { user, submitted } = this.state;
         return (
             <div className="container-fluid register-page">
@@ -53,6 +54,11 @@ class RegisterPage extends React.Component {
                     <h1 className="logo">Horse Ranker</h1>
                     </div>
                 </div>
+                <div>
+                    {alert.message &&
+                        <div className={`alert ${alert.type}`}>{alert.message}</div>
+                    }
+                </div>    
                 <div className="row register-form">
                     <div className="col-md-4 col-md-offset-4">
                     
@@ -99,9 +105,11 @@ class RegisterPage extends React.Component {
 }
 
 function mapStateToProps(state) {
+    const { alert } = state;
     const { registering } = state.registration;
     return {
-        registering
+        registering,
+        alert
     };
 }
 

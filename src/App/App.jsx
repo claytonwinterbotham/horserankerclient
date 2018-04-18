@@ -11,6 +11,7 @@ import { PrivateRoute } from '../components';
 import { HomePage } from '../HomePage';
 import { LoginPage } from '../LoginPage';
 import { RegisterPage } from '../RegisterPage';
+import { AboutPage } from '../AboutPage';
 
 class App extends React.Component {
     constructor(props) {
@@ -24,14 +25,11 @@ class App extends React.Component {
     }
 
     render() {
-        const { alert } = this.props;
         return(
             <div>
-                {alert.message &&
-                    <div className={`alert ${alert.type}`}>{alert.message}</div>
-                }
                 <Router history={history}>
                         <Switch>
+                            <PrivateRoute path="/About" component={AboutPage} />
                             <PrivateRoute path="/Admin" component={AdminPage} />
                             <Route path="/login" component={LoginPage} />
                             <Route path="/register" component={RegisterPage} />   

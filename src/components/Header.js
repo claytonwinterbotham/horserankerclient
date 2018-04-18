@@ -15,9 +15,10 @@ class Header extends React.Component {
                 
                 <div className="row">
                     <div className=" col-12 page-header">
-                    <h1 className="logo">Horse Ranker</h1>
+                    <Link to="/"><h1 className="logo">Horse Ranker</h1></Link>
                     {user.role != null && user.role.role == "Admin" && <p><Link className="admin-dashboard-button" to="/Admin">Admin Dashboard</Link></p> }
-                    <p className="welcome-message">Welcome {user.email}!</p>
+
+                    <Link className="about-btn text-left" to="/about">About</Link>
                     <Link className="logout-btn text-right" to="/login">Logout</Link>
                     </div>
                 </div>

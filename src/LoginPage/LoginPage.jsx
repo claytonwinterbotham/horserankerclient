@@ -40,6 +40,7 @@ class LoginPage extends React.Component {
     render() {
         const { loggingIn } = this.props;
         const { email, password, submitted, user } = this.state;
+        const { alert } = this.props;
         return (
             <div className="container-fluid login-page">
                 <div className="row">
@@ -47,6 +48,11 @@ class LoginPage extends React.Component {
                     <h1 className="logo">Horse Ranker</h1>
                     </div>
                 </div>
+                <div>
+                    {alert.message &&
+                        <div className={`alert ${alert.type}`}>{alert.message}</div>
+                    }
+                </div>    
                 <div className="row login-form">
                     <div className="col-md-4 col-md-offset-4">
 
@@ -83,12 +89,13 @@ class LoginPage extends React.Component {
 }
 
 function mapStateToProps(state) {
-    const { authentication } = state;
+    const { authentication, alert } = state;
     const { user } = authentication;
     const { loggingIn } = state.authentication;
     return {
         loggingIn,
-        user
+        user,
+        alert
     };
 }
 

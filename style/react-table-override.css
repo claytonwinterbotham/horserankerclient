@@ -11,12 +11,12 @@
 
 .horse-detail-content .ReactTable .rt-tr-group {
     height: 6rem;
-    font-size: 1.3em;
+    font-size: 1.2em;
 }
 
 .rt-thead{
     color: #f2a3ad;
-    font-size: 1.3em;
+    font-size: 1em;
 }
 
 .ReactTable.-striped .rt-tr.-odd {

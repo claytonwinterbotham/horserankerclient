@@ -13,7 +13,7 @@ class RaceList extends Component {
    
 
     render() { 
-        const { races, track } = this.props;
+        const { races, track, user } = this.props;
         return(
             <div className="loading"> 
                 {!races.loading && !races.items && <em>Please select a track and date.</em>}       
@@ -68,8 +68,10 @@ class RaceList extends Component {
     }
 }
 function mapStateToProps(state) {
-    const { races } = state
+    const { races, authentication } = state;
+    const { user } = authentication;
     return {
+        user,
         races,
         track: state.activeTrack 
     }

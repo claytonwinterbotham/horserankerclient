@@ -19,10 +19,10 @@ class HomePage extends React.Component {
 
     render() {
         const { user, users } = this.props;
-        console.log(JSON.stringify(user))
         return (
             <div id="home" className="home-content container-fluid">
-                    <Header />
+                <Header />
+                <p className="welcome-message">Welcome {user.email}!</p>    
                 <div className="row main-content">
                     <div className="col-xl-2 col-lg-2 col-md-12 col-sm-12 track-list">
                         <TrackList />
