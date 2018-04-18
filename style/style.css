@@ -132,10 +132,15 @@ body{
 
 .about-content{
     color: #fff;
+    margin-bottom: 3em;
 }
 
 .about-text{
     margin-top: 3em;
+}
+
+.about text > h3, h4, ul, li {
+    padding: .5em;
 }
 
 .admin-page{
@@ -183,6 +188,7 @@ body{
     -moz-box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.75);
     box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.75);
 }
+
 .card-block {
     background: #a3a055;
     text-align: center;
@@ -237,7 +243,7 @@ body{
     user-select: none;
     border: 1px solid transparent;
     padding: .375rem .75rem;
-    font-size: 1.2rem;
+    font-size: .9em;
     line-height: 1.5;
     border-radius: .25rem;
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
@@ -256,4 +262,13 @@ body{
 .back-button:hover{
     background: #A3A055;
     border-color: #BDB959  
+}
+
+.table_instructions{
+    margin-left: 1.5em;
+    color: #A3A055;
+}
+
+.attribute{
+    color: #a19696;
 }

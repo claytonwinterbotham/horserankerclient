@@ -16,7 +16,7 @@ class RaceList extends Component {
         const { races, track, user } = this.props;
         return(
             <div className="loading"> 
-                {!races.loading && !races.items && <em>Please select a track and date.</em>}       
+                {!races.loading && !races.items && <em>Please select a track and date to start.</em>}       
                 {races.loading && <em>Loading Races...</em>}
                 {races.error && <span className="text-danger">ERROR: {races.error}</span>}
                 {races.items &&      
@@ -62,7 +62,14 @@ class RaceList extends Component {
                         }
                     }
                     }
-                    }}/>}
+                    }}
+                    /> 
+                    }
+                     <ul className="table_instructions">
+                        <li>Click on the table headings to sort through the statistics by acsending or descending order.</li>
+                        <li>Select a race to view all horses for the specific race.</li>
+                    </ul>
+                    
            </div>   
         )
     }

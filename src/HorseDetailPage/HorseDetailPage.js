@@ -60,7 +60,13 @@ class HorseDetailPage extends Component {
                         Header:  <span data-tip='Position in the Starting Gate, relative to the Rail'>Post<ReactTooltip /></span>,
                         accessor: 'possummary',
                         Cell: (row) => {
-                            return <div><img height={34} src={require('../images/horsenumbers/' + row.value + '.png')}/></div>
+                            let image = "";
+                            if(row.value){
+                                image = row.value;
+                            }else{
+                                image = 0; 
+                            }
+                            return <div><img height={34} src={require('../images/horsenumbers/' + image + '.png')}/></div>
                             console.log(JSON.stringify("Row original" + row.value))
                           },
                         },{
@@ -126,6 +132,10 @@ class HorseDetailPage extends Component {
                     showPagination = {false}
                     />}
                 </div>
+                <ul className="table_instructions">
+                    <li>Click on the table headings to sort through the statistics by acsending or descending order.</li>
+                    <li>Hover over the headings for details about each column.</li>
+                </ul>    
             </div>
             
         </div> 

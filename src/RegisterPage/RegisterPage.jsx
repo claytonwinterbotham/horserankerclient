@@ -99,6 +99,7 @@ class RegisterPage extends React.Component {
                     </form>
                     </div>
                  </div>
+                 <p className="attribute">Photo by Simson Petrol on Unsplash</p>   
             </div>
         );
     }

@@ -28,9 +28,14 @@ class HorseListPage extends Component {
             </div> 
             <div className="row">
                 <div className="col-sm-12 loading">
+                    <ul className="table_instructions">
+                        <li>Click on the table headings to sort through the statistics by acsending or descending order.</li>
+                        <li>Hover over the headings for details about each column.</li>
+                        <li>Select a horse to view specific details.</li>
+                    </ul>    
                     {horses.loading && <em>Loading Horses...</em>}
                     {horses.error && <span className="text-danger">ERROR: {horses.error}</span>}
-                    {horses.items &&      
+                    {horses.items && 
                     <ReactTable
                     data={horses.items}
                     columns={[{

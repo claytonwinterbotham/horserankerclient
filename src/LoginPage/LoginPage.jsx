@@ -82,7 +82,8 @@ class LoginPage extends React.Component {
                             </div>
                         </form>
                     </div>
-                </div>    
+                </div> 
+                <p className="attribute">Photo by Simson Petrol on Unsplash</p>   
             </div>    
         );
     }
