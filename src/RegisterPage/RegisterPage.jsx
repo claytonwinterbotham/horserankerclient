@@ -88,6 +88,7 @@ class RegisterPage extends React.Component {
                             {user.password != user.password2 &&
                                 <div className="help-block">Passwords do not match</div>
                             }
+                            <p className="password-instructions">Password must be alphanumeric with one special character and minimum 6 characters</p>
                         </div>
                         <div className="form-group">
                             <button className="btn btn-primary">Register</button>

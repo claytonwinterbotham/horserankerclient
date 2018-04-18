@@ -51,7 +51,7 @@ function register(user) {
                 user => { 
                     dispatch(success());
                     history.push('/login');
-                    dispatch(alertActions.success('We just sent you an email. Please use it to confirm you email address.'));
+                    dispatch(alertActions.success('We just sent you an email. Please use it to confirm your email address.'));
                 },
                 error => {
                     dispatch(failure(error));
