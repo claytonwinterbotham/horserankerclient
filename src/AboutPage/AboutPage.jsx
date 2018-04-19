@@ -18,11 +18,11 @@ class AboutPage extends React.Component {
             <p className="welcome-message">Welcome {user.email}!</p> 
                 <div className="row about-text">
                     <div className="col-8 col-lg-offset-2">
-                        <h5>Horse Ranker is an Application that helps Horseplayers and Horse Race Handicappers
-                            compare and contrast the strengths and weaknesses of each horse in a Race. Horse Ranker 
-                            provides Horseplayers and Handicappers with a quick Visual Comparison of 
+                        <h5>Horse Ranker provides Horseplayers and Handicappers with a quick Visual Comparison of 
                             who the Top Ranked Horses are in each race, and which ones to watch out for when trying
-                            to predict the outcomes of races.</h5>
+                            to predict the outcomes of races. This Application helps Handicappers
+                            compare and contrast the strengths and weaknesses of each horse in a Race. </h5> 
+                           
 
                         <h5>Users can select a specific Race at a Specific Racetrack and view a list of the horses in the race.
                         Then, they can see the Rankings of each horse on a number of Ratings and Variables
@@ -42,7 +42,7 @@ class AboutPage extends React.Component {
                             <li>Horses are also ranked in terms of how fast they ran in their most recent Three Races.</li>
 
                             <li>Horses are also ranked in terms of the Class or Level of Competition at which they have been 
-                            most successfli in their past history of races.</li>
+                            most successful in their past history of races.</li>
 
                             <li>Users can also see where each horse Ranks on Ratings of <strong>Probability of Winning</strong>, or <strong>Power Rankings.</strong></li>
 
