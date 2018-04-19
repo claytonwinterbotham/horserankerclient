@@ -66,7 +66,7 @@ class RaceList extends Component {
                     /> 
                     }
                      <ul className="table_instructions">
-                        <li>Click on the table headings to sort through the statistics by acsending or descending order.</li>
+                        <li>Click on the heading to re-rank the horses for a specific column.</li>
                         <li>Select a race to view all horses for the specific race.</li>
                     </ul>
                     

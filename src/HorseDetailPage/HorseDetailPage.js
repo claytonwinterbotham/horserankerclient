@@ -32,24 +32,24 @@ class HorseDetailPage extends Component {
                     <ReactTable
                     data ={[{
                         name: horse.items.name,
-                        possummary: horse.items.possummary,
+                        possummary: Number(horse.items.possummary),
                         STYLE: horse.items.style,
-                        PTS: horse.items.pts,
-                        E1AVGRANK: horse.items.e1AVGRANK,
-                        E2AVGRANK: horse.items.e2AVGRANK,
-                        EPRANK: horse.items.eprank,
-                        HE2RANK: horse.items.hE2RANK,
-                        lpavgrank: horse.items.lpavgrank,
-                        lpRank: horse.items.lpRank,
-                        hlprank: horse.items.hlprank,
-                        lR1RANK: horse.items.lR1RANK,
-                        lR2RANK: horse.items.lR2RANK,
-                        lR3RANK: horse.items.lR3RANK,
-                        backspeedrank: horse.items.backspeedrank,
-                        LR1Rank: horse.items.lR1RANK,
-                        aclrank: horse.items.aclrank,
-                        curclassrank: horse.items.curclassrank,
-                        primepowerrank: horse.items.primepowerrank,
+                        PTS: Number(horse.items.pts),
+                        E1AVGRANK: Number(horse.items.e1AVGRANK),
+                        E2AVGRANK: Number(horse.items.e2AVGRANK),
+                        EPRANK: Number(horse.items.eprank),
+                        HE2RANK: Number(horse.items.hE2RANK),
+                        lpavgrank: Number(horse.items.lpavgrank),
+                        lpRank: Number(horse.items.lpRank),
+                        hlprank: Number(horse.items.hlprank),
+                        lR1RANK: Number(horse.items.lR1RANK),
+                        lR2RANK: Number(horse.items.lR2RANK),
+                        lR3RANK: Number(horse.items.lR3RANK),
+                        backspeedrank: Number(horse.items.backspeedrank),
+                        LR1Rank: Number(horse.items.lR1RANK),
+                        aclrank: Number(horse.items.aclrank),
+                        curclassrank: Number(horse.items.curclassrank),
+                        primepowerrank: Number(horse.items.primepowerrank),
                         pP_ODDS: horse.items.pP_ODDS
                     }]}
 
@@ -133,7 +133,7 @@ class HorseDetailPage extends Component {
                     />}
                 </div>
                 <ul className="table_instructions">
-                    <li>Click on the table headings to sort through the statistics by acsending or descending order.</li>
+                <li>Click on the heading to re-rank the horses for a specific column.</li>
                     <li>Hover over the headings for details about each column.</li>
                 </ul>    
             </div>
