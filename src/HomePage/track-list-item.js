@@ -37,7 +37,7 @@ class TrackListItem extends Component {
         return (
             <div id={"collapse" + this.props.trackid} data-parent="#accordion" className="collapse" role="tabpanel" aria-labelledby={"heading" + this.props.trackid}>
             <div className="loading" className="card-block">
-                {dates.loading && <em>Loading dates...</em>}
+                {/* {dates.loading && <em>Loading dates...</em>} */}
                 {dates.error && <span className="text-danger">ERROR: {dates.error}</span>}
                 {dates.items && this.renderListItem()}
             </div>
