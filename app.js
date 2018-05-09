@@ -5,8 +5,8 @@ const app =  express();
 
 app.use(express.static(__dirname));
 
-app.get('/*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'https://horseranker.com/about.html'))
+app.get('https://horseranker.com/*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'https://horseranker.com'))
 });
 
 app.listen(port);
