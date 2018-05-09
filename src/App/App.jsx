@@ -35,8 +35,7 @@ class App extends React.Component {
                             <Route path="/register" component={RegisterPage} />   
                             <PrivateRoute path="/horsedetail" component={HorseDetailPage} />
                             <PrivateRoute path="/horsedata" component={HorseListPage} />
-                            <PrivateRoute exact path="/" component={HomePage} />
-                            <PrivateRoute exact path="/*" component={NotFound} />
+                            <PrivateRoute path="/" component={HomePage} />
                         </Switch>
                 </Router>
             </div>    
