@@ -6,7 +6,7 @@ const app =  express();
 app.use(express.static(__dirname));
 
 app.get('https://horseranker.com/*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'https://horseranker.com'))
+    res.sendFile(path.resolve(__dirname, 'https://horseranker.com/index.html'))
 });
 
 app.listen(port);
