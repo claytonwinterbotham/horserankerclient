@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux'; 
 import ReactTable from 'react-table'
-import {Header} from '../Components';
+import {Header} from '../components';
 import ReactTooltip from 'react-tooltip';
 
 class HorseDetailPage extends Component {

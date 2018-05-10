@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { dataActions } from '../actions';
 import { bindActionCreators } from 'redux'; 
-import {Header} from '../Components';
+import {Header} from '../components';
 import ReactTable from 'react-table'
 import ReactTooltip from 'react-tooltip';
 
