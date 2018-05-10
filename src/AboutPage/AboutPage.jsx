@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch, Link, withRouter } from 'react-router-dom
 import { connect } from 'react-redux';
 import { userActions, dataActions } from '../actions';
 import { bindActionCreators } from 'redux'; 
-import {Header} from '../Components/Header';
+import {Header} from '../Components';
 
 class AboutPage extends React.Component {
     constructor(props){

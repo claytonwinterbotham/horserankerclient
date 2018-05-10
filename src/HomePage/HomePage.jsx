@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { userActions, dataActions } from '../actions';
-import {Header} from '../Components/Header';
+import {Header} from '../Components';
 import TrackList from './track-list';
 import RaceList from './race-list';
 import { bindActionCreators } from 'redux'; 
