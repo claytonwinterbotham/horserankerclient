@@ -1,0 +1,87 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add webpack-contrib/html-webpack-plugin -D
+
+PATH: 
+  C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\wbin;C:\Program Files (x86)\Intel\TXE Components\TCS\;C:\Program Files\Intel\TXE Components\TCS\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Hewlett-Packard\SimplePass\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Microsoft SQL Server\120\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\120\Tools\Binn\ManagementStudio\;C:\Program Files (x86)\Microsoft SQL Server\120\DTS\Binn\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\dotnet\;C:\Program Files\Git\cmd;C:\Program Files (x86)\Smart Projects\IsoBuster;C:\Program Files\nodejs\;C:\Users\cwinterbotham\Documents\code\mongodb;C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\;C:\Program Files\Microsoft SQL Server\140\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\140\DTS\Binn\;C:\Program Files\Microsoft SQL Server\140\DTS\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\130\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\Client SDK\ODBC\130\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\ManagementStudio\;C:\Program Files (x86)\Yarn\bin\;C:\Users\cwinterbotham\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Microsoft VS Code\bin;C:\Users\cwinterbotham\AppData\Roaming\npm;C:\Program Files\Heroku\bin;C:\Program Files\Docker Toolbox;C:\Users\cwinterbotham\AppData\Local\Yarn\bin;C:\Users\cwinterbotham\AppData\Local\GitHubDesktop\bin
+
+Yarn version: 
+  1.5.1
+
+Node version: 
+  9.2.1
+
+Platform: 
+  win32 x64
+
+npm manifest: 
+  {
+    "name": "horseranker",
+    "version": "1.0.0",
+    "description": "Horse Ranker",
+    "repository": "git@github.com:StephenGrider/ReduxSimpleStarter.git",
+    "scripts": {
+      "dev": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+      "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
+      "postinstall": "webpack",
+      "start": "node app.js",
+      "test:watch": "npm run test -- --watch"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "history": "^4.6.3",
+      "react": "^16.0.0",
+      "react-dom": "^16.0.0",
+      "react-redux": "^5.0.5",
+      "react-router": "^4.2.0",
+      "react-router-dom": "^4.1.2",
+      "react-table": "^6.8.0",
+      "react-tooltip": "^3.5.0",
+      "react-validation": "^3.0.7",
+      "redux": "^3.7.2",
+      "redux-logger": "^3.0.6",
+      "redux-thunk": "^2.2.0"
+    },
+    "devDependencies": {
+      "babel-core": "^6.21.0",
+      "babel-loader": "^7.1.2",
+      "babel-preset-es2015": "^6.18.0",
+      "babel-preset-react": "^6.16.0",
+      "babel-preset-stage-1": "^6.24.1",
+      "babel-preset-stage-3": "^6.24.1",
+      "express": "^4.16.3",
+      "mini-css-extract-plugin": "^0.4.0",
+      "path": "^0.12.7",
+      "tapable": "1.0.0-beta.5",
+      "webpack": "^4.8.1",
+      "webpack-cli": "^2.1.3",
+      "webpack-dev-server": "^2.8.2"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: Command failed.
+  Exit code: 128
+  Command: git
+  Arguments: ls-remote --tags --heads ssh://git@github.com/webpack-contrib/html-webpack-plugin.git
+  Directory: C:\Users\cwinterbotham\Desktop\horseranker_client\horserankerclient
+  Output:
+  Host key verification failed.
+  fatal: Could not read from remote repository.
+  
+  Please make sure you have the correct access rights
+  and the repository exists.
+      at ProcessTermError.MessageError (C:\Program Files (x86)\Yarn\lib\cli.js:186:110)
+      at new ProcessTermError (C:\Program Files (x86)\Yarn\lib\cli.js:226:113)
+      at ChildProcess.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:30281:17)
+      at ChildProcess.emit (events.js:159:13)
+      at maybeClose (internal/child_process.js:943:16)
+      at Socket.stream.socket.on (internal/child_process.js:363:11)
+      at Socket.emit (events.js:159:13)
+      at Pipe._handle.close [as _onclose] (net.js:558:12)

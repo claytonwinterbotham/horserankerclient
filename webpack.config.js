@@ -1,5 +1,4 @@
 var path = require('path');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: './src/index.jsx',
@@ -29,11 +28,6 @@ module.exports = {
         }
         ]
     },
-    plugins: [new HtmlWebpackPlugin({
-        template: 'about.html',
-        filename: 'about.html',
-        inject: 'body'
-    })],
     devServer: {
       historyApiFallback: {
         index: '/about.html'
