@@ -12,6 +12,7 @@ import { HomePage } from '../HomePage';
 import { LoginPage } from '../LoginPage';
 import { RegisterPage } from '../RegisterPage';
 import { AboutPage } from '../AboutPage';
+import { hashHistory } from 'react-router';
 
 class App extends React.Component {
     constructor(props) {

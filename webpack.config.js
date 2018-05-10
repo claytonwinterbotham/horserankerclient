@@ -12,7 +12,7 @@ module.exports = {
         extensions: ['.js', '.jsx']
     },
     module: {
-      loaders: [
+      rules: [
           {
             test: /\.jsx?$/,
             exclude: /(node_modules|bower_components)/,
@@ -22,14 +22,12 @@ module.exports = {
             }
           },
           {
-            test: /\.(png|jpg|gif)$/,
-            use: [
-              {
-                loader: 'file-loader',
-                options: {}  
-              }
-            ]
-          }]
+            test: /\.(png|jp(e*)g|svg)$/,  
+            use: [{
+                loader: 'url-loader',
+            }]
+        }
+        ]
     },
     plugins: [new HtmlWebpackPlugin({
         template: 'about.html',
