@@ -4,7 +4,10 @@ Horse Ranker provides Horseplayers and Handicappers with a quick Visual Comparis
 Users can select a specific Race at a Specific Racetrack and view a list of the horses in the race. Then, they can see the Rankings of each horse on a number of Ratings and Variables which Experts have agreed are relevant to deciding how each horse is likely to behave and perform in comparison to the other horses.
 
 **Here is a working version deployed to Heroku https://stormy-sea-31022.herokuapp.com**
+
 **Server side code and API information is at https://github.com/claytonwinterbotham/horserankerserver**
+
+**You can also see also explore the API endpoints through SwaggerUI by navigating to https://admin.horseranker.com**
 
 ## Features
 - Sort and rank through horse racing statistics.
