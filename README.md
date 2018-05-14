@@ -5,8 +5,6 @@ Users can select a specific Race at a Specific Racetrack and view a list of the 
 
 **Here is a working version deployed to Heroku https://stormy-sea-31022.herokuapp.com**
 
-**Server side code and API information is at https://github.com/claytonwinterbotham/horserankerserver**
-
 **You can also explore the API endpoints through SwaggerUI by navigating to https://admin.horseranker.com**
 
 ## Features
