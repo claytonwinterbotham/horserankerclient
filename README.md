@@ -7,7 +7,7 @@ Users can select a specific Race at a Specific Racetrack and view a list of the 
 **Server side code and API information is at https://github.com/claytonwinterbotham/horserankerserver**
 
 ## Features
-- Sort and rank through horse racingn statistics.
+- Sort and rank through horse racing statistics.
 - Account register email confirmation.
 - Account password recovery.
 
