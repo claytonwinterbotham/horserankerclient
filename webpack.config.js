@@ -5,7 +5,7 @@ module.exports = {
     output: {
         path: path.resolve('dist'),
         filename: 'bundle.js',
-        publicPath: '/'
+        publicPath: '/assets'
     },
     resolve: {
         extensions: ['.js', '.jsx']
@@ -30,7 +30,7 @@ module.exports = {
     },
     devServer: {
       historyApiFallback: {
-        index: '/about.html'
+        index: 'dist/index.html'
       }
     }
 }

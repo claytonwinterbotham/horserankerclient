@@ -6,7 +6,6 @@
     -webkit-box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
     box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
-    
 }
 
 .horse-detail-content .ReactTable .rt-tr-group {
@@ -43,7 +42,7 @@
     appearance: none;
     display: block;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     border: 0;
     border-radius: 3px;
     padding: 6px;
@@ -53,6 +52,10 @@
     transition: all .1s ease;
     cursor: pointer;
     outline: none;
+}
+
+.-pagination .-btn{
+    max-height: 5%;
 }
 
 .ReactTable .-pagination input,
